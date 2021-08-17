@@ -2,6 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <Title>Framework</Title>
+        <Authors>byCrookie</Authors>
+        <Description>base-framework for c# applications</Description>
+        <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.0.5</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
