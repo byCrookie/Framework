@@ -2,7 +2,7 @@
 
 namespace Framework.Boot.Logger
 {
-    public interface ILoggerBootStep<in TContext, out TConfig> : IWorkflowConfigStep<TContext, TConfig>
+    public interface ILoggerBootStep<in TContext, in TConfig> : IWorkflowConfigStep<TContext, TConfig>
         where TContext : WorkflowBaseContext, IBootContext
     {
     }

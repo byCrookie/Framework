@@ -203,6 +203,16 @@ namespace Framework.Workflow
             return this;
         }
 
+        public IWorkflowBuilder<TContext> ThenAsync<TStep, TConfig>(Action<TConfig> configure) where TStep : IWorkflowConfigStep<TContext, TConfig>
+        {
+            var step = _factory.Create<TStep>();
+            var configuration = Activator.CreateInstance<TConfig>();
+            configure?.Invoke(configuration);
+            step.SetConfig(configuration);
+            _workflow.AddStep(step);
+            return this;
+        }
+
         public IWorkflowBuilder<TContext> If(Func<TContext, bool> condition, Action<TContext> action)
         {
             _workflow.AddStep(new WorkflowConditionStep<TContext>(condition, action));

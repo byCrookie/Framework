@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Framework.Test.Flow.ConfigStep;
 using Framework.Workflow;
 
 namespace Framework.Test.Flow
@@ -11,5 +12,6 @@ namespace Framework.Test.Flow
         }
 
         public List<string> Results { get; set; }
+        public TestStepConfiguration Config { get; set; }
     }
 }

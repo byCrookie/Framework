@@ -12,5 +12,6 @@ namespace Framework.Workflow.Steps.Then
         IWorkflowBuilder<TContext> ThenAsync(Func<TContext, Task> action);
         IWorkflowBuilder<TContext> ThenAsync<TStep>() where TStep : IWorkflowStep<TContext>;
         IWorkflowBuilder<TContext> ThenAsync<TStep, TParameter>(TParameter parameter) where TStep : IWorkflowParameterStep<TContext, TParameter>;
+        IWorkflowBuilder<TContext> ThenAsync<TStep, TConfig>(Action<TConfig> configure) where TStep : IWorkflowConfigStep<TContext, TConfig>;
     }
 }

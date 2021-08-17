@@ -39,10 +39,8 @@ namespace Framework.Boot.Configuration
             return Task.FromResult(true);
         }
 
-        public void SetConfig(Action<TConfig> configure)
+        public void SetConfig(TConfig configuration)
         {
-            var configuration = Activator.CreateInstance<TConfig>();
-            configure?.Invoke(configuration);
             _bootStepConfiguration = configuration as FrameworkBootStepConfiguration;
         }
     }

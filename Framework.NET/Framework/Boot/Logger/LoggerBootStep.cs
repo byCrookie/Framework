@@ -27,10 +27,8 @@ namespace Framework.Boot.Logger
             return Task.FromResult(true);
         }
 
-        public void SetConfig(Action<TConfig> configure)
+        public void SetConfig(TConfig configuration)
         {
-            var configuration = Activator.CreateInstance<TConfig>();
-            configure?.Invoke(configuration);
             _configuration = configuration as LoggerBootStepConfiguration;
         }
     }
