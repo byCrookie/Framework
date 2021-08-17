@@ -17,10 +17,9 @@ namespace Framework.Workflow.Steps.Console
             _action = context => Task.FromResult(action(context));
         }
 
-        public Task ExecuteAsync(TContext context)
+        public async Task ExecuteAsync(TContext context)
         {
-            System.Console.WriteLine(_action(context));
-            return Task.CompletedTask;
+            System.Console.WriteLine(await _action(context).ConfigureAwait(false));
         }
 
         public Task<bool> ShouldExecuteAsync(TContext context)
