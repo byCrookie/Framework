@@ -3,7 +3,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Framework.Autofac.Factory;
 using Framework.Workflow.Steps.Catch;
-using Framework.Workflow.Steps.Console;
+using Framework.Workflow.Steps.Console.Read;
+using Framework.Workflow.Steps.Console.Write;
 using Framework.Workflow.Steps.If;
 using Framework.Workflow.Steps.IfElse;
 using Framework.Workflow.Steps.IfElse.IfElseElseReturn;
@@ -242,6 +243,42 @@ namespace Framework.Workflow
         public IWorkflowBuilder<TContext> WriteLineAsync(Func<TContext, Task<string>> action)
         {
             _workflow.AddStep(new WorkflowWriteLineStep<TContext>(action));
+            return this;
+        }
+
+        public IWorkflowBuilder<TContext> Write(Func<TContext, string> action)
+        {
+            _workflow.AddStep(new WorkflowWriteStep<TContext>(action));
+            return this;
+        }
+
+        public IWorkflowBuilder<TContext> WriteAsync(Func<TContext, Task<string>> action)
+        {
+            _workflow.AddStep(new WorkflowWriteStep<TContext>(action));
+            return this;
+        }
+        
+        public IWorkflowBuilder<TContext> ReadLine(Expression<Func<TContext, string>> propertyPicker)
+        {
+            _workflow.AddStep(new WorkflowReadLineStep<TContext>(propertyPicker));
+            return this;
+        }
+
+        public IWorkflowBuilder<TContext> Read(Expression<Func<TContext, int>> propertyPicker)
+        {
+            _workflow.AddStep(new WorkflowReadStep<TContext>(propertyPicker));
+            return this;
+        }
+
+        public IWorkflowBuilder<TContext> ReadKey(Expression<Func<TContext, ConsoleKeyInfo>> propertyPicker)
+        {
+            _workflow.AddStep(new WorkflowReadKeyStep<TContext>(propertyPicker));
+            return this;
+        }
+
+        public IWorkflowBuilder<TContext> ReadMultiLine(Expression<Func<TContext, string>> propertyPicker, string endOfInput)
+        {
+            _workflow.AddStep(new WorkflowReadMultiLineStep<TContext>(propertyPicker, endOfInput));
             return this;
         }
 

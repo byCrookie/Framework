@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Framework.Workflow.Steps.Console
+namespace Framework.Workflow.Steps.Console.Write
 {
-    internal class WorkflowWriteLineStep<TContext> : IWorkflowStep<TContext> where TContext : WorkflowBaseContext
+    internal class WorkflowWriteStep<TContext> : IWorkflowStep<TContext> where TContext : WorkflowBaseContext
     {
         private readonly Func<TContext, Task<string>> _action;
 
-        public WorkflowWriteLineStep(Func<TContext, Task<string>> action)
+        public WorkflowWriteStep(Func<TContext, Task<string>> action)
         {
             _action = action;
         }
 
-        public WorkflowWriteLineStep(Func<TContext, string> action)
+        public WorkflowWriteStep(Func<TContext, string> action)
         {
             _action = context => Task.FromResult(action(context));
         }
 
         public async Task ExecuteAsync(TContext context)
         {
-            System.Console.WriteLine(await _action(context).ConfigureAwait(false));
+            System.Console.Write(await _action(context).ConfigureAwait(false));
         }
 
         public Task<bool> ShouldExecuteAsync(TContext context)

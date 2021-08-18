@@ -13,5 +13,13 @@ namespace Framework.Workflow.Property
             var prop = (PropertyInfo) ((MemberExpression) propertyPicker.Body).Member;
             prop.SetValue(context, await actionReturn(context).ConfigureAwait(false), null);
         }
+        
+        public static Task SetAsync(TContext context, TProperty value,
+            Expression<Func<TContext, TProperty>> propertyPicker)
+        {
+            var prop = (PropertyInfo) ((MemberExpression) propertyPicker.Body).Member;
+            prop.SetValue(context, value, null);
+            return Task.CompletedTask;
+        }
     }
 }

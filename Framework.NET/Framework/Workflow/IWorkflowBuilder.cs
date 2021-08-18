@@ -1,5 +1,7 @@
 ﻿using Framework.Workflow.Steps.Catch;
 using Framework.Workflow.Steps.Console;
+using Framework.Workflow.Steps.Console.Read;
+using Framework.Workflow.Steps.Console.Write;
 using Framework.Workflow.Steps.If;
 using Framework.Workflow.Steps.IfElse;
 using Framework.Workflow.Steps.Stop;
@@ -17,7 +19,8 @@ namespace Framework.Workflow
         IWorkflowThenBuilder<TContext>,
         IWorkflowIfElseBuilder<TContext>,
         IWorkflowIfBuilder<TContext>,
-        IWorkflowWriteLineBuilder<TContext>
+        IWorkflowWriteBuilder<TContext>,
+        IWorkflowReadBuilder<TContext>
         where TContext : WorkflowBaseContext
     {
         IWorkflow<TContext> Build();
