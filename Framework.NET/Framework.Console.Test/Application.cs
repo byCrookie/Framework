@@ -17,9 +17,29 @@ namespace Framework.Console.Test
             _workflowBuilder = workflowBuilder;
         }
 
-        public Task RunAsync(CancellationToken cancellationToken)
+        public async Task RunAsync(CancellationToken cancellationToken)
         {
-            var workflow = _workflowBuilder
+            var result = await MultiInputWorkflow().RunAsync(new ConsoleTestContext()).ConfigureAwait(false);
+            var test = result.MultiLineInput;
+        }
+
+        private IWorkflow<ConsoleTestContext> MultiInputWorkflow()
+        {
+            return _workflowBuilder
+                .WriteLine(_ => "Input MultiLine Input")
+                .ReadMultiLine(context => context.MultiLineInput, options =>
+                {
+                    options.EndOfInput = ")";
+                    options.RemoveEndOfInput = false;
+                    options.ShouldTrimLines = true;
+                })
+                .Write(context => $"{context.MultiLineInput}")
+                .Build();
+        } 
+        
+        private IWorkflow<ConsoleTestContext> BigWorkflow()
+        {
+            return _workflowBuilder
                 .While(c => c.Selection != 1, whileFlow => whileFlow
                     .ThenAsync<ISelectionStep<ConsoleTestContext, SelectionStepOptions>,
                         SelectionStepOptions>(
@@ -34,17 +54,6 @@ namespace Framework.Console.Test
                 .Catch(c => System.Console.WriteLine(c.Selection))
                 .ReadKey(c => c.Key)
                 .WriteLine(c => $"{c.Key.Key}")
-                .Build();
-
-            return workflow.RunAsync(new ConsoleTestContext());
-        }
-
-        private IWorkflow<ConsoleTestContext> MultiInputWorkflow()
-        {
-            return _workflowBuilder
-                .WriteLine(_ => "Input MultiLine Input")
-                .ReadMultiLine(context => context.MultiLineInput, options => { options.RemoveEndOfInput = false; })
-                .Write(context => $"{context.MultiLineInput}")
                 .Build();
         }
 

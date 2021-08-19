@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Framework.Extensions.String;
 using Framework.Workflow.Property;
 
 namespace Framework.Workflow.Steps.Console.Read
@@ -25,10 +27,15 @@ namespace Framework.Workflow.Steps.Console.Read
             while (!line.Contains(_options.EndOfInput))
             {
                 line = System.Console.ReadLine();
-
+                
                 if (line is null)
                 {
                     break;
+                }
+
+                if (_options.ShouldTrimLines)
+                {
+                    line = line.Trim();
                 }
 
                 if (line.Contains(_options.EndOfInput) && !line.StartsWith(_options.EndOfInput))
@@ -42,13 +49,29 @@ namespace Framework.Workflow.Steps.Console.Read
                     {
                         stringBuilder.AppendLine(line);
                     }
-                } else if (!line.StartsWith(_options.EndOfInput))
+                }
+                else if (line.StartsWith(_options.EndOfInput))
+                {
+                    if (!_options.RemoveEndOfInput)
+                    {
+                        stringBuilder.AppendLine(line);   
+                    }
+                }
+                else
                 {
                     stringBuilder.AppendLine(line);
                 }
             }
 
-            return PropertyValueSetter<TContext, string>.SetAsync(context, stringBuilder.ToString(), _propertyPicker);
+            var value = stringBuilder.ToString();
+            var index = value.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
+            
+            if (index >= 0)
+            {
+                value = value.Remove(index, Environment.NewLine.Length);
+            }
+
+            return PropertyValueSetter<TContext, string>.SetAsync(context, value, _propertyPicker);
         }
 
         public Task<bool> ShouldExecuteAsync(TContext context)
