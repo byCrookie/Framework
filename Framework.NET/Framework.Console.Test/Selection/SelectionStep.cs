@@ -6,12 +6,12 @@ using Framework.Workflow;
 
 namespace Framework.Console.Test.Selection
 {
-    internal class SelectionStep<TContext, TConfig> :
-        ISelectionStep<TContext, TConfig>
+    internal class SelectionStep<TContext, TOptions> :
+        ISelectionStep<TContext, TOptions>
         where TContext : WorkflowBaseContext, ISelectionContext
     {
         private readonly IWorkflowBuilder<SelectionContext> _workflowBuilder;
-        private SelectionStepConfiguration _configuration;
+        private SelectionStepOptions _options;
 
         public SelectionStep(IWorkflowBuilder<SelectionContext> workflowBuilder)
         {
@@ -23,10 +23,10 @@ namespace Framework.Console.Test.Selection
             var selectionContext = new SelectionContext();
 
             var workflow = _workflowBuilder
-                .While(c => c.Selection == 0 || c.Selection > _configuration.Selections.Count, whileFlow => whileFlow
-                    .WriteLine(c => $"{c.Selection == 0} {c.Selection > _configuration.Selections.Count}")
+                .While(c => c.Selection == 0 || c.Selection > _options.Selections.Count, whileFlow => whileFlow
+                    .WriteLine(c => $"{c.Selection == 0} {c.Selection > _options.Selections.Count}")
                     .WriteLine(_ => @"Select an option")
-                    .WriteLine(_ => CreateSelectionMenu(_configuration.Selections))
+                    .WriteLine(_ => CreateSelectionMenu(_options.Selections))
                     .ReadLine(c => c.Input)
                     .IfFlow(c => string.IsNullOrEmpty(c.Input.Trim()), ifFlow => ifFlow
                         .WriteLine(_ => @"Press enter to exit or space to continue")
@@ -35,7 +35,7 @@ namespace Framework.Console.Test.Selection
                         )
                     )
                     .Then(c => c.Selection, c => Convert.ToInt16(c.Input.Trim()))
-                    .If(c => c.Selection > _configuration.Selections.Count || c.Selection < 1, _ => System.Console.WriteLine($@"Option is not valid"))
+                    .If(c => c.Selection > _options.Selections.Count || c.Selection < 1, _ => System.Console.WriteLine($@"Option is not valid"))
                 )
                 .Build();
 
@@ -61,9 +61,9 @@ namespace Framework.Console.Test.Selection
             return Task.FromResult(context.ShouldExecute());
         }
 
-        public void SetConfig(TConfig configuration)
+        public void SetOptions(TOptions options)
         {
-            _configuration = configuration as SelectionStepConfiguration;
+            _options = options as SelectionStepOptions;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Framework.Boot.Configuration
 {
-    public class FrameworkBootStepConfiguration
+    public class FrameworkBootStepOptions
     {
         public string ConfigurationFile { get; set; }
     }

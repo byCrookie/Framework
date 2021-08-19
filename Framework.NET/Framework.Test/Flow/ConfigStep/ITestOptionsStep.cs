@@ -2,7 +2,7 @@
 
 namespace Framework.Test.Flow.ConfigStep
 {
-    public interface ITestConfigStep<in TContext, in TConfig> : IWorkflowConfigStep<TContext, TConfig>
+    public interface ITestOptionsStep<in TContext, in TOptions> : IWorkflowOptionsStep<TContext, TOptions>
         where TContext : WorkflowBaseContext
     {
     }

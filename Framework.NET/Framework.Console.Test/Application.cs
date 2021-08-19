@@ -21,8 +21,8 @@ namespace Framework.Console.Test
         {
             var workflow = _workflowBuilder
                 .While(c => c.Selection != 1, whileFlow => whileFlow
-                    .ThenAsync<ISelectionStep<ConsoleTestContext, SelectionStepConfiguration>,
-                        SelectionStepConfiguration>(
+                    .ThenAsync<ISelectionStep<ConsoleTestContext, SelectionStepOptions>,
+                        SelectionStepOptions>(
                         config => { config.Selections = new List<string> {"Valid", "Invalid"}; }
                     )
                     .IfElseFlow(c => c.Selection == 2, ifflow => ifflow
@@ -43,7 +43,7 @@ namespace Framework.Console.Test
         {
             return _workflowBuilder
                 .WriteLine(_ => "Input MultiLine Input")
-                .ReadMultiLine(context => context.MultiLineInput, ":!q")
+                .ReadMultiLine(context => context.MultiLineInput, options => { options.RemoveEndOfInput = false; })
                 .Write(context => $"{context.MultiLineInput}")
                 .Build();
         }
@@ -51,7 +51,7 @@ namespace Framework.Console.Test
         private IWorkflow<ConsoleTestContext> SelectionWorkflow()
         {
             return _workflowBuilder
-                .ThenAsync<ISelectionStep<ConsoleTestContext, SelectionStepConfiguration>, SelectionStepConfiguration>(
+                .ThenAsync<ISelectionStep<ConsoleTestContext, SelectionStepOptions>, SelectionStepOptions>(
                     config => { config.Selections = new List<string> {"ABC", "BCD"}; }
                 )
                 .WriteLine(c => $"{c.Selection}")

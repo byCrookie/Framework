@@ -3,7 +3,7 @@
 namespace Framework.Boot.Configuration
 {
     public interface
-        IFrameworkConfigurationBootStep<in TContext, in TConfig> : IWorkflowConfigStep<TContext, TConfig>
+        IFrameworkConfigurationBootStep<in TContext, in TOptions> : IWorkflowOptionsStep<TContext, TOptions>
         where TContext : WorkflowBaseContext, IBootContext
     {
     }

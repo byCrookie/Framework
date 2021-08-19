@@ -12,6 +12,6 @@ namespace Framework.Test.Flow
         }
 
         public List<string> Results { get; set; }
-        public TestStepConfiguration Config { get; set; }
+        public TestStepOptions Config { get; set; }
     }
 }

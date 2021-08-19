@@ -9,12 +9,12 @@ namespace Framework.Workflow.Steps.Console.Read
     internal class WorkflowReadMultiLineStep<TContext> : IWorkflowStep<TContext> where TContext : WorkflowBaseContext
     {
         private readonly Expression<Func<TContext, string>> _propertyPicker;
-        private readonly string _endOfInput;
+        private readonly MultiLineOptions _options;
 
-        public WorkflowReadMultiLineStep(Expression<Func<TContext, string>> propertyPicker, string endOfInput)
+        public WorkflowReadMultiLineStep(Expression<Func<TContext, string>> propertyPicker, MultiLineOptions options)
         {
             _propertyPicker = propertyPicker;
-            _endOfInput = endOfInput;
+            _options = options;
         }
 
         public Task ExecuteAsync(TContext context)
@@ -22,7 +22,7 @@ namespace Framework.Workflow.Steps.Console.Read
             var stringBuilder = new StringBuilder();
 
             var line = string.Empty;
-            while (!line.Contains(_endOfInput))
+            while (!line.Contains(_options.EndOfInput))
             {
                 line = System.Console.ReadLine();
 
@@ -31,11 +31,18 @@ namespace Framework.Workflow.Steps.Console.Read
                     break;
                 }
 
-                if (line.Contains(_endOfInput) && !line.StartsWith(_endOfInput))
+                if (line.Contains(_options.EndOfInput) && !line.StartsWith(_options.EndOfInput))
                 {
-                    var endOfLineIndex = line.IndexOf(_endOfInput, StringComparison.Ordinal);
-                    stringBuilder.AppendLine(line.Remove(endOfLineIndex));
-                } else if (!line.StartsWith(_endOfInput))
+                    if (_options.RemoveEndOfInput)
+                    {
+                        var endOfLineIndex = line.IndexOf(_options.EndOfInput, StringComparison.Ordinal);
+                        stringBuilder.AppendLine(line.Remove(endOfLineIndex));
+                    }
+                    else
+                    {
+                        stringBuilder.AppendLine(line);
+                    }
+                } else if (!line.StartsWith(_options.EndOfInput))
                 {
                     stringBuilder.AppendLine(line);
                 }

@@ -8,12 +8,12 @@ using Framework.Xml;
 
 namespace Framework.Boot.Configuration
 {
-    internal class FrameworkConfigurationBootStep<TContext, TConfig> : IFrameworkConfigurationBootStep<TContext, TConfig>
+    internal class FrameworkConfigurationBootStep<TContext, TOptions> : IFrameworkConfigurationBootStep<TContext, TOptions>
         where TContext : WorkflowBaseContext, IBootContext
     {
         private readonly IFrameworkConfigurationMapper _frameworkConfigurationMapper;
         private readonly IXmlSerializer _xmlSerializer;
-        private FrameworkBootStepConfiguration _bootStepConfiguration;
+        private FrameworkBootStepOptions _bootStepOptions;
 
         public FrameworkConfigurationBootStep(
             IXmlSerializer xmlSerializer,
@@ -26,7 +26,7 @@ namespace Framework.Boot.Configuration
         public Task ExecuteAsync(TContext context)
         {
             var assemblyRootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var config = _xmlSerializer.Deserialize<XmlFrameworkConfiguration>(File.ReadAllText($@"{assemblyRootPath}\{_bootStepConfiguration.ConfigurationFile}"));
+            var config = _xmlSerializer.Deserialize<XmlFrameworkConfiguration>(File.ReadAllText($@"{assemblyRootPath}\{_bootStepOptions.ConfigurationFile}"));
 
             var bootContext = context as IBootContext;
             bootContext.FrameworkConfiguration = _frameworkConfigurationMapper.Map(config);
@@ -39,9 +39,9 @@ namespace Framework.Boot.Configuration
             return Task.FromResult(true);
         }
 
-        public void SetConfig(TConfig configuration)
+        public void SetOptions(TOptions options)
         {
-            _bootStepConfiguration = configuration as FrameworkBootStepConfiguration;
+            _bootStepOptions = options as FrameworkBootStepOptions;
         }
     }
 }

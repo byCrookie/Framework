@@ -2,7 +2,7 @@
 
 namespace Framework.Console.Test.Selection
 {
-    internal class SelectionStepConfiguration
+    internal class SelectionStepOptions
     {
         public List<string> Selections { get; set; }
     }

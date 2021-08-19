@@ -9,15 +9,15 @@ using log4net;
 
 namespace Framework.Test.Flow.ConfigStep
 {
-    internal class TestConfigStep<TContext, TConfig> : ITestConfigStep<TContext, TConfig> where TContext : WorkflowBaseContext
+    internal class TestOptionsStep<TContext, TOptions> : ITestOptionsStep<TContext, TOptions> where TContext : WorkflowBaseContext
     {
-        private TestStepConfiguration _stepConfiguration;
+        private TestStepOptions _stepOptions;
 
         public Task ExecuteAsync(TContext context)
         {
             if (context is TestContext testContext)
             {
-                testContext.Config = _stepConfiguration;
+                testContext.Config = _stepOptions;
             }
 
             return Task.CompletedTask;
@@ -28,9 +28,9 @@ namespace Framework.Test.Flow.ConfigStep
             return Task.FromResult(true);
         }
 
-        public void SetConfig(TConfig configuration)
+        public void SetOptions(TOptions options)
         {
-            _stepConfiguration = configuration as TestStepConfiguration;
+            _stepOptions = options as TestStepOptions;
         }
     }
 }

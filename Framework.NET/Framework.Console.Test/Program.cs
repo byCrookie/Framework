@@ -19,15 +19,15 @@ namespace Framework.Console.Test
             var bootScope = BootConfiguration.Configure<BootContext>();
 
             var bootFlow = bootScope.WorkflowBuilder
-                .ThenAsync<IFrameworkConfigurationBootStep<BootContext, FrameworkBootStepConfiguration>,
-                    FrameworkBootStepConfiguration>(
+                .ThenAsync<IFrameworkConfigurationBootStep<BootContext, FrameworkBootStepOptions>,
+                    FrameworkBootStepOptions>(
                     config => { config.ConfigurationFile = "Framework.Console.Test.cfg.xml"; }
                 )
                 .ThenAsync<IAssemblyBootStep<BootContext>>()
                 .ThenAsync<ITypeBootStep<BootContext>>()
                 .ThenAsync<IContainerBuildBootStep<BootContext>>()
                 .ThenAsync<IModuleCatalogBootStep<BootContext>>()
-                .ThenAsync<ILoggerBootStep<BootContext, LoggerBootStepConfiguration>, LoggerBootStepConfiguration>(
+                .ThenAsync<ILoggerBootStep<BootContext, LoggerBootStepOptions>, LoggerBootStepOptions>(
                     config => { config.Log4NetConfigurationFile = "Framework.Console.Test.cfg.xml"; }
                 )
                 .ThenAsync<IBuildContainerBootStep<BootContext>>()

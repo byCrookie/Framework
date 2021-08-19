@@ -204,12 +204,12 @@ namespace Framework.Workflow
             return this;
         }
 
-        public IWorkflowBuilder<TContext> ThenAsync<TStep, TConfig>(Action<TConfig> configure) where TStep : IWorkflowConfigStep<TContext, TConfig>
+        public IWorkflowBuilder<TContext> ThenAsync<TStep, TConfig>(Action<TConfig> configure) where TStep : IWorkflowOptionsStep<TContext, TConfig>
         {
             var step = _factory.Create<TStep>();
             var configuration = Activator.CreateInstance<TConfig>();
             configure?.Invoke(configuration);
-            step.SetConfig(configuration);
+            step.SetOptions(configuration);
             _workflow.AddStep(step);
             return this;
         }
@@ -276,9 +276,11 @@ namespace Framework.Workflow
             return this;
         }
 
-        public IWorkflowBuilder<TContext> ReadMultiLine(Expression<Func<TContext, string>> propertyPicker, string endOfInput)
+        public IWorkflowBuilder<TContext> ReadMultiLine(Expression<Func<TContext, string>> propertyPicker, Action<MultiLineOptions> options)
         {
-            _workflow.AddStep(new WorkflowReadMultiLineStep<TContext>(propertyPicker, endOfInput));
+            var multiLineOptions = new MultiLineOptions();
+            options?.Invoke(multiLineOptions);
+            _workflow.AddStep(new WorkflowReadMultiLineStep<TContext>(propertyPicker, multiLineOptions));
             return this;
         }
 

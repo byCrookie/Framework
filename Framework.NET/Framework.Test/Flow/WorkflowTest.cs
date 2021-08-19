@@ -25,8 +25,8 @@ namespace Framework.Test.Flow
         [Test]
         public async Task METHOD_WHEN_THEN()
         {
-            A.CallTo(() => _factory.Create<ITestConfigStep<TestContext, TestStepConfiguration>>())
-                .Returns(new TestConfigStep<TestContext, TestStepConfiguration>());
+            A.CallTo(() => _factory.Create<ITestOptionsStep<TestContext, TestStepOptions>>())
+                .Returns(new TestOptionsStep<TestContext, TestStepOptions>());
             
             var workflow = _workflowBuilder
                 .If(_ => true, c => c.Results.Add("If"))
@@ -36,7 +36,7 @@ namespace Framework.Test.Flow
                 .IfElse(_ => false, c => c.Results.Add("IfElseIf"), c => c.Results.Add("IfElseElse"))
                 .IfElseAsync(_ => Task.FromResult(true), c => AddAsync(c, "IfElseIfAsync"),
                     c => AddAsync(c, "IfElseElseAsync"))
-                .ThenAsync<ITestConfigStep<TestContext, TestStepConfiguration>, TestStepConfiguration>(config => config
+                .ThenAsync<ITestOptionsStep<TestContext, TestStepOptions>, TestStepOptions>(config => config
                     .SetParam1("conf1")
                     .SetParam2("conf2")
                 )

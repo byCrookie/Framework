@@ -7,13 +7,13 @@ using log4net;
 
 namespace Framework.Boot.Logger
 {
-    internal class LoggerBootStep<TContext, TConfig> : ILoggerBootStep<TContext, TConfig> where TContext : WorkflowBaseContext, IBootContext
+    internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
     {
-        private LoggerBootStepConfiguration _configuration;
+        private LoggerBootStepOptions _options;
 
         public Task ExecuteAsync(TContext context)
         {
-            Log4NetConfigurator.Configure(context.CointainerBuilder, _configuration.Log4NetConfigurationFile);
+            Log4NetConfigurator.Configure(context.CointainerBuilder, _options.Log4NetConfigurationFile);
             
             context.CointainerBuilder.RegisterType<ApplicationLogger>()
                 .WithParameter("logger", LogManager.GetLogger(typeof(IApplication)).Logger)
@@ -27,9 +27,9 @@ namespace Framework.Boot.Logger
             return Task.FromResult(true);
         }
 
-        public void SetConfig(TConfig configuration)
+        public void SetOptions(TOptions options)
         {
-            _configuration = configuration as LoggerBootStepConfiguration;
+            _options = options as LoggerBootStepOptions;
         }
     }
 }
