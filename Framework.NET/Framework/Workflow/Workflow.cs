@@ -39,9 +39,10 @@ namespace Framework.Workflow
             {
                 foreach (var step in steps)
                 {
+                    doneSteps.Add(step);
+                    
                     if (await step.ShouldExecuteAsync(context).ConfigureAwait(false))
                     {
-                        doneSteps.Add(step);
                         await step.ExecuteAsync(context).ConfigureAwait(false);
                     }
                 }
