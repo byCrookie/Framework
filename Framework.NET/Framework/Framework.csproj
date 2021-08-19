@@ -7,7 +7,7 @@
         <Description>base-framework for c# applications</Description>
         <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.0.10</PackageVersion>
+        <PackageVersion>1.0.11</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
