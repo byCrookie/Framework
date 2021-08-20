@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Title>Framework.NET</Title>
+        <Authors>byCrookie</Authors>
+        <Description>base-framework for c# applications</Description>
+        <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.0.14</PackageVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="6.2.0"/>
+        <PackageReference Include="AutoFixture" Version="4.17.0"/>
+        <PackageReference Include="Ben.Demystifier" Version="0.4.1"/>
+        <PackageReference Include="log4net" Version="2.0.12"/>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>$(AssemblyName).Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+</Project>
