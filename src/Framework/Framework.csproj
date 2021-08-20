@@ -8,14 +8,15 @@
         <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>1.0.14</PackageVersion>
+        <RootNamespace>Framework</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac" Version="6.2.0"/>
-        <PackageReference Include="AutoFixture" Version="4.17.0"/>
-        <PackageReference Include="Ben.Demystifier" Version="0.4.1"/>
-        <PackageReference Include="log4net" Version="2.0.12"/>
-        <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0"/>
+        <PackageReference Include="Autofac" Version="6.2.0" />
+        <PackageReference Include="AutoFixture" Version="4.17.0" />
+        <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
+        <PackageReference Include="log4net" Version="2.0.12" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
