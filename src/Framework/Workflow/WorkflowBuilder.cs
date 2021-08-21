@@ -233,6 +233,14 @@ namespace Framework.Workflow
             _workflow.AddStep(conditionStep);
             return this;
         }
+        
+        public IWorkflowBuilder<TContext> IfAsync<TStep>(Func<TContext, bool> condition) where TStep : IWorkflowStep<TContext>
+        {
+            var step = _factory.Create<TStep>();
+            var conditionStep = new WorkflowConditionStep<TContext>(condition, step.ExecuteAsync);
+            _workflow.AddStep(conditionStep);
+            return this;
+        }
 
         public IWorkflowBuilder<TContext> WriteLine(Func<TContext, string> action)
         {

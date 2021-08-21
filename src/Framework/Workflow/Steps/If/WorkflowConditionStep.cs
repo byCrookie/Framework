@@ -19,6 +19,12 @@ namespace Framework.Workflow.Steps.If
             _condition = condition;
             _action = action;
         }
+        
+        public WorkflowConditionStep(Func<TContext, bool> condition,  Func<TContext, Task> action)
+        {
+            _condition = context => Task.FromResult(condition(context));
+            _action = action;
+        }
 
         public Task ExecuteAsync(TContext context)
         {
