@@ -9,6 +9,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>1.0.15</PackageVersion>
         <RootNamespace>Framework</RootNamespace>
+        <RepositoryUrl>https://github.com/byCrookie/Framework.NET</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
