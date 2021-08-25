@@ -15,7 +15,8 @@ jobs:
       - name: Build solution and generate NuGet package
         run: |  
           cd .\src\Framework
-          dotnet pack -c Release -o out  
+          dotnet build -c Release
+          dotnet pack -c Release -o out --include-source --include-symbols 
 
       - name: Install NuGet client
         uses: warrenbuckley/Setup-Nuget@v1
