@@ -5,24 +5,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
-    name: Update NuGet package
+    runs-on: windows-latest
+    name: Update NuGet 
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v1
-
-      - name: Setup .NET Core @ Latest
-        uses: actions/setup-dotnet@v1
-        with:
-          source-url: https://nuget.pkg.github.com/byCrookie/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+        uses: actions/checkout@master
           
       - name: Build solution and generate NuGet package
         run: |  
-          cd src/Framework
+          cd src\Framework
           dotnet pack -c Release -o out  
 
+      - name: Install NuGet client
+        uses: warrenbuckley/Setup-Nuget@v1
+        
+      - name: Add private GitHub registry to NuGet
+        run: nuget sources add -name "framework" -Source https://nuget.pkg.github.com/byCrookie/index.json -Username byCrookie -Password ${{ secrets.GITHUB_TOKEN }}
+        
       - name: Push generated package to GitHub registry
-        run: dotnet nuget push ./src/Framework/out/*.nupkg --skip-duplicate --no-symbols true
+        run: nuget push .\src\Framework\out\*.nupkg -Source "GPR" -SkipDuplicate
