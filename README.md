@@ -15,8 +15,9 @@ Contains various components to build .NET apps.
 ## How to use
 
 1. Reference https://nuget.pkg.github.com/byCrookie/index.json in your nuget.config or download the package
-2. Use username byCrookie and password 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
-3. Add the package to your project
+2. If step 1 fails, you have to download the sources, build the project and use the packged nuget package 
+3. Use username byCrookie and password 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
+4. Add the package to your project
 
 ## Contributing / Issues
 All contributions are welcome! If you have any issues or feature requests, either implement it yourself or create an issue, thank you.
