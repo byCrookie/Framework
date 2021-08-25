@@ -24,4 +24,4 @@ jobs:
         run: nuget sources add -name "framework" -Source https://nuget.pkg.github.com/byCrookie/index.json -Username byCrookie -Password ${{ secrets.GITHUB_TOKEN }}
         
       - name: Push generated package to GitHub registry
-        run: nuget push .\src\Framework\out\*.nupkg -Source "GPR" -SkipDuplicate
+        run: nuget push .\src\Framework\Release\*.nupkg -Source "GPR" -SkipDuplicate
