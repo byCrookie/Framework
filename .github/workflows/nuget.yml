@@ -28,4 +28,4 @@ jobs:
         run: nuget sources add -name "framework" -Source https://nuget.pkg.github.com/byCrookie/index.json -Username byCrookie -Password ${{ secrets.GITHUB_TOKEN }}
         
       - name: Push generated package to GitHub registry
-        run: nuget push .\src\Framework\out\*.nupkg -Source "framework" -SkipDuplicate --api-key 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
+        run: nuget push .\src\Framework\out\*.nupkg --api-key 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 -Source "framework" -SkipDuplicate
