@@ -1,4 +1,5 @@
 ﻿using Framework.Boot.Autofac.ModuleCatalog;
+using Workflow.Autofac;
 
 namespace Framework
 {
@@ -6,6 +7,7 @@ namespace Framework
     {
         public FrameworkModuleCatalog()
         {
+            AddRootModule(new WorkflowModule());
             AddRootModule(new FrameworkModule());
         }
     }

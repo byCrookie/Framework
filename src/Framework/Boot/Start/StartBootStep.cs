@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 using Framework.Boot.Logger;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Boot.Start
 {

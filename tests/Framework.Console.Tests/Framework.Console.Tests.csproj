@@ -16,4 +16,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Workflow.Autofac" Version="1.0.3" />
+    </ItemGroup>
+
 </Project>

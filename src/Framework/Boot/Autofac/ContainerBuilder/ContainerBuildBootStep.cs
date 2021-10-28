@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Boot.Autofac.ContainerBuilder
 {

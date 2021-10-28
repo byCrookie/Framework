@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Framework.Tests.Flow.ConfigStep;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Tests.Flow
 {

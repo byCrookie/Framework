@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Framework.Boot;
 using Framework.Console.Tests.Selection;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Console.Tests
 {

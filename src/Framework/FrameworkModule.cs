@@ -8,7 +8,6 @@ using Framework.Throttle;
 using Framework.Time;
 using Framework.Timer;
 using Framework.Unique;
-using Framework.Workflow;
 using Framework.Xml;
 
 namespace Framework
@@ -17,7 +16,6 @@ namespace Framework
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterModule<WorkflowModule>();
             builder.RegisterModule<AutofacModule>();
             builder.RegisterModule<BootModule>();
             builder.RegisterModule<XmlModule>();

@@ -5,8 +5,8 @@ using FakeItEasy;
 using FluentAssertions;
 using Framework.Autofac.Factory;
 using Framework.Tests.Flow.ConfigStep;
-using Framework.Workflow;
 using NUnit.Framework;
+using Workflow;
 
 namespace Framework.Tests.Flow
 {

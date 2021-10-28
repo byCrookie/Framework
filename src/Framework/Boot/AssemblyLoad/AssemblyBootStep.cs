@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Boot.AssemblyLoad
 {

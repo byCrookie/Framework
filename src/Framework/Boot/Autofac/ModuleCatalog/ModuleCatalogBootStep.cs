@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Boot.Autofac.ModuleCatalog
 {
