@@ -18,7 +18,7 @@
         <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
         <PackageReference Include="log4net" Version="2.0.12" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-        <PackageReference Include="Workflow.Autofac" Version="1.0.3" />
+        <PackageReference Include="Workflow.Autofac" Version="1.0.11" />
     </ItemGroup>
 
     <ItemGroup>
