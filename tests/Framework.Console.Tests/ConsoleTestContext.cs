@@ -1,6 +1,6 @@
 using System;
 using Framework.Console.Tests.Selection;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Console.Tests
 {

@@ -1,4 +1,4 @@
-﻿using Framework.Workflow;
+﻿using Workflow;
 
 namespace Framework.Console.Tests.Selection
 {

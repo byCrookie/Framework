@@ -1,4 +1,4 @@
-﻿using Framework.Workflow;
+﻿using Workflow;
 
 namespace Framework.Tests.Flow.ConfigStep
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Console.Tests.Selection
 {

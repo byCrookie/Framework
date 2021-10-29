@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Framework.Boot.Configuration.Mapping;
-using Framework.Workflow;
 using Framework.Xml;
+using Workflow;
 
 namespace Framework.Boot.Configuration
 {

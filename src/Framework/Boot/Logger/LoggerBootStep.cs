@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Autofac;
 using Framework.Autofac.Logger;
-using Framework.Workflow;
 using log4net;
+using Workflow;
 
 namespace Framework.Boot.Logger
 {

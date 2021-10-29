@@ -8,8 +8,8 @@ using Framework.Throttle;
 using Framework.Time;
 using Framework.Timer;
 using Framework.Unique;
-using Framework.Workflow;
 using Framework.Xml;
+using Workflow.Autofac;
 
 namespace Framework
 {
@@ -17,7 +17,7 @@ namespace Framework
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterModule<WorkflowModule>();
+            builder.AddWorkflow();
             builder.RegisterModule<AutofacModule>();
             builder.RegisterModule<BootModule>();
             builder.RegisterModule<XmlModule>();

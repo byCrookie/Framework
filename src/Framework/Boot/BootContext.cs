@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using Framework.Boot.Configuration;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Boot
 {

@@ -1,8 +1,8 @@
-﻿using Framework.Workflow;
+﻿using Workflow;
 
 namespace Framework.Boot.Autofac.BuildContainer
 {
-    public interface IBuildContainerBootStep<TContext> : IWorkflowStep<TContext> 
+    public interface IBuildContainerBootStep<in TContext> : IWorkflowStep<TContext> 
         where TContext : WorkflowBaseContext, IBootContext
     {}
 }

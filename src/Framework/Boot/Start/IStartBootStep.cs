@@ -1,8 +1,8 @@
-﻿using Framework.Workflow;
+﻿using Workflow;
 
 namespace Framework.Boot.Start
 {
-    public interface IStartBootStep<TContext>   : IWorkflowStep<TContext> 
+    public interface IStartBootStep<in TContext>   : IWorkflowStep<TContext> 
         where TContext : WorkflowBaseContext, IBootContext
     {}
 }

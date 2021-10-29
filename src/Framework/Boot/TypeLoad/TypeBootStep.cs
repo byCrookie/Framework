@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using Framework.Extensions.List;
-using Framework.Workflow;
+using Workflow;
 
 namespace Framework.Boot.TypeLoad
 {
