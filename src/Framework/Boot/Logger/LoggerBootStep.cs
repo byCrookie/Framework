@@ -12,12 +12,14 @@ namespace Framework.Boot.Logger
 
         public Task ExecuteAsync(TContext context)
         {
-            Log4NetConfigurator.Configure(context.CointainerBuilder, _options.Log4NetConfigurationFile);
+            var action = Log4NetConfigurator.Configure(_options.Log4NetConfigurationFile);
             
-            context.CointainerBuilder.RegisterType<ApplicationLogger>()
+            context.RegistrationActions.Add(action);
+
+            context.RegistrationActions.Add(builder => builder.RegisterType<ApplicationLogger>()
                 .WithParameter("logger", LogManager.GetLogger(typeof(IApplication)).Logger)
-                .As<IApplicationLogger>();
-            
+                .As<IApplicationLogger>());
+
             return Task.CompletedTask;
         }
 

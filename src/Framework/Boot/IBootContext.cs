@@ -9,7 +9,9 @@ namespace Framework.Boot
     public interface IBootContext
     {
         IContainer Container { get; set; }
-        ContainerBuilder CointainerBuilder { get; set; }
+        IList<Action<ContainerBuilder>> RegistrationActions { get; set; }
+        ILifetimeScope BootLifetimeScope { get; set; }
+        ILifetimeScope LifetimeScope { get; set; }
         IEnumerable<Assembly> Assemblies { get; set; }
         IEnumerable<Type> Types { get; set; }
         FrameworkConfiguration FrameworkConfiguration { get; set; }

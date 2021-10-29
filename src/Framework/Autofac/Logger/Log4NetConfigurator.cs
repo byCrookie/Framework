@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using Autofac;
 using Framework.Boot.Logger;
@@ -8,19 +9,19 @@ namespace Framework.Autofac.Logger
 {
     public static class Log4NetConfigurator
     {
-        public static void Configure(ContainerBuilder containerBuilder)
+        public static Action<ContainerBuilder> Configure()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var module = new Log4NetMiddlewareModule(new Log4NetMiddleware());
-            containerBuilder.RegisterModule(module);
+            return builder => builder.RegisterModule(module);
         }
         
-        public static void Configure(ContainerBuilder containerBuilder, string log4NetConfigurationFile)
+        public static Action<ContainerBuilder> Configure(string log4NetConfigurationFile)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var module = new Log4NetMiddlewareModule(new Log4NetMiddleware());
             XmlConfigurator.Configure(new FileInfo(log4NetConfigurationFile));
-            containerBuilder.RegisterModule(module);
+            return builder => builder.RegisterModule(module);
         }
     }
 }

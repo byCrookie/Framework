@@ -7,5 +7,6 @@ namespace Framework.Boot.Autofac
     {
         public IContainer Container { get; set; }
         public IWorkflowBuilder<T> WorkflowBuilder { get; set; }
+        public ILifetimeScope LifeTimeScope { get; set; }
     }
 }

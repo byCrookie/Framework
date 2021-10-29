@@ -14,18 +14,24 @@ namespace Framework.Boot.Autofac
 
         public static BootScope<T> Configure<T>(IEnumerable<Module> modules) where T : WorkflowBaseContext
         {
-            var builder = new global::Autofac.ContainerBuilder();
-            builder.RegisterModule<FrameworkModule>();
-
-            foreach (var module in modules)
-            {
-                builder.RegisterModule(module);
-            }
-            
+            var builder = new ContainerBuilder();
             var container = builder.Build();
-            var workflowBuilder = container.Resolve<IWorkflowBuilder<T>>();
+            
+            var bootLifeTimeScope = container.BeginLifetimeScope(bootContainer =>
+            {
+                bootContainer.RegisterModule<FrameworkModule>();
+
+                foreach (var module in modules)
+                {
+                    bootContainer.RegisterModule(module);
+                }
+            });
+
+            var workflowBuilder = bootLifeTimeScope.Resolve<IWorkflowBuilder<T>>();
+
             return new BootScope<T>
             {
+                LifeTimeScope = bootLifeTimeScope,
                 Container = container,
                 WorkflowBuilder = workflowBuilder
             };
