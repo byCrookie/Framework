@@ -18,18 +18,17 @@ namespace Framework.Boot.Autofac.ModuleCatalog
             var catalogs = bootContext.Types
                 .Where(type => type.IsAssignableTo<ModuleCatalog>()
                                && type != typeof(ModuleCatalog));
-            
 
             foreach (var module in catalogs
                 .Select(catalog => Activator.CreateInstance(catalog) as ModuleCatalog)
                 .Select(catalogInstance => catalogInstance?.Modules ?? new List<IModule>())
                 .SelectMany(modules => modules))
             {
-                context.CointainerBuilder.RegisterModule(module);
+                context.RegistrationActions.Add(builder => builder.RegisterModule(module));
             }
 
-            context.CointainerBuilder.RegisterModule<FrameworkModule>();
-            
+            context.RegistrationActions.Add(builder => builder.RegisterModule<FrameworkModule>());
+
             return Task.CompletedTask;
         }
 

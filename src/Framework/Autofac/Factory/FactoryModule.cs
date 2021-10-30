@@ -14,6 +14,9 @@ namespace Framework.Autofac.Factory
             builder.RegisterGeneric(typeof(Factory<,,,,>)).As(typeof(IFactory<,,,,>));
             builder.RegisterGeneric(typeof(Factory<,,,,,>)).As(typeof(IFactory<,,,,,>));
             
+            builder.RegisterType<KeyedFactory>().As<IKeyedFactory>();
+            builder.RegisterGeneric(typeof(KeyedFactory<>)).As(typeof(IKeyedFactory<>));
+            
             base.Load(builder);
         }
     }

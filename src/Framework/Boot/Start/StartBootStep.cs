@@ -13,12 +13,20 @@ namespace Framework.Boot.Start
         public async Task ExecuteAsync(TContext context)
         {
             var cancellationTokenSource = new CancellationTokenSource();
-            
+
             try
             {
-                var scope = context.Container.BeginLifetimeScope();
-                var app = scope.Resolve<IApplication>();
-                await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+                await using (var scope = context.Container.BeginLifetimeScope(builder =>
+                {
+                    foreach (var registration in context.RegistrationActions)
+                    {
+                        registration(builder);
+                    }
+                }))
+                {
+                    var app = scope.Resolve<IApplication>();
+                    await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+                }
             }
             catch (Exception e)
             {
@@ -31,7 +39,20 @@ namespace Framework.Boot.Start
             finally
             {
                 cancellationTokenSource.Dispose();
-                await context.Container.DisposeAsync().ConfigureAwait(false);
+                if (context.BootLifetimeScope is not null)
+                {
+                    await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(false);
+                }
+
+                if (context.LifetimeScope is not null)
+                {
+                    await context.LifetimeScope.DisposeAsync().ConfigureAwait(false);
+                }
+
+                if (context.Container is not null)
+                {
+                    await context.Container.DisposeAsync().ConfigureAwait(false);
+                }
             }
         }
 
