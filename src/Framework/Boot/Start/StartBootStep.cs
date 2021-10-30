@@ -39,9 +39,20 @@ namespace Framework.Boot.Start
             finally
             {
                 cancellationTokenSource.Dispose();
-                await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(false);
-                await context.LifetimeScope.DisposeAsync().ConfigureAwait(false);
-                await context.Container.DisposeAsync().ConfigureAwait(false);
+                if (context.BootLifetimeScope is not null)
+                {
+                    await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(false);
+                }
+
+                if (context.LifetimeScope is not null)
+                {
+                    await context.LifetimeScope.DisposeAsync().ConfigureAwait(false);
+                }
+
+                if (context.Container is not null)
+                {
+                    await context.Container.DisposeAsync().ConfigureAwait(false);
+                }
             }
         }
 
