@@ -1,8 +1,12 @@
-﻿namespace Framework.Autofac.Factory
+﻿using System;
+
+namespace Framework.Autofac.Factory
 {
     public interface IFactory
     {
         T Create<T>();
+        object Create(Type type);
+        T Create<T>(Type type);
     }
     
     public interface IFactory<out T>

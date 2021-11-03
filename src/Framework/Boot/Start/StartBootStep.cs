@@ -24,16 +24,26 @@ namespace Framework.Boot.Start
                     }
                 }))
                 {
-                    var app = scope.Resolve<IApplication>();
-                    await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+                    try
+                    {
+                        var app = scope.Resolve<IApplication>();
+                        await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
+                    }
+                    catch (Exception e)
+                    {
+                        if (scope.TryResolve<IApplicationLogger>(out var logger))
+                        {
+                            logger.Error(e.Demystify());
+                        }
+                        
+                        throw;
+                    }
                 }
             }
             catch (Exception e)
             {
                 cancellationTokenSource.Cancel();
-                var scope = context.Container;
-                var logger = scope.Resolve<IApplicationLogger>();
-                logger.Error(e.Demystify());
+                Console.WriteLine(e.Demystify());
                 throw;
             }
             finally
@@ -41,17 +51,17 @@ namespace Framework.Boot.Start
                 cancellationTokenSource.Dispose();
                 if (context.BootLifetimeScope is not null)
                 {
-                    await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(false);
+                    await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(true);
                 }
 
                 if (context.LifetimeScope is not null)
                 {
-                    await context.LifetimeScope.DisposeAsync().ConfigureAwait(false);
+                    await context.LifetimeScope.DisposeAsync().ConfigureAwait(true);
                 }
 
                 if (context.Container is not null)
                 {
-                    await context.Container.DisposeAsync().ConfigureAwait(false);
+                    await context.Container.DisposeAsync().ConfigureAwait(true);
                 }
             }
         }
