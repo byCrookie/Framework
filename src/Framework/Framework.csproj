@@ -7,7 +7,7 @@
         <Description>base-framework for c# applications</Description>
         <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.0.35</PackageVersion>
+        <PackageVersion>1.0.39</PackageVersion>
         <RootNamespace>Framework</RootNamespace>
         <RepositoryUrl>https://github.com/byCrookie/Framework.NET</RepositoryUrl>
         <PackageId>Framework.NET</PackageId>
@@ -18,7 +18,7 @@
         <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
         <PackageReference Include="log4net" Version="2.0.12" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-        <PackageReference Include="Workflow.Autofac" Version="1.0.11" />
+        <PackageReference Include="Workflow.Autofac" Version="1.0.13" />
     </ItemGroup>
 
     <ItemGroup>

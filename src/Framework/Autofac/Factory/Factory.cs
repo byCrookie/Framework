@@ -5,16 +5,26 @@ namespace Framework.Autofac.Factory
 {
     internal class Factory : IFactory
     {
-        private readonly IComponentContext _componentContext;
+        private readonly ILifetimeScope _lifetimeScope;
 
-        public Factory(IComponentContext componentContext)
+        public Factory(ILifetimeScope lifetimeScope)
         {
-            _componentContext = componentContext;
+            _lifetimeScope = lifetimeScope;
         }
 
         public T Create<T>()
         {
-            return _componentContext.Resolve<T>();
+            return _lifetimeScope.Resolve<T>();
+        }
+        
+        public object Create(Type type)
+        {
+            return _lifetimeScope.Resolve(type);
+        }
+        
+        public T Create<T>(Type type)
+        {
+            return (T)_lifetimeScope.Resolve(type);
         }
     }
     

@@ -8,8 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "src\Framework\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{EA710D4F-26B3-4D0F-B4FE-CE882B19E357}"
 ProjectSection(SolutionItems) = preProject
-	Packages\Workflow.Autofac.1.0.11.nupkg = Packages\Workflow.Autofac.1.0.11.nupkg
-	Packages\Workflow.1.0.11.nupkg = Packages\Workflow.1.0.11.nupkg
+	Packages\Workflow.Autofac.1.0.13.nupkg = Packages\Workflow.Autofac.1.0.13.nupkg
 EndProjectSection
 EndProject
 Global
