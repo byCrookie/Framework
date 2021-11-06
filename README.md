@@ -1,6 +1,4 @@
 # Framework.NET
-
-## About
 Contains various components to build .NET apps.
 
 ## Dependencies
