@@ -3,6 +3,11 @@
 ## About
 Contains various components to build .NET apps.
 
+## Dependencies
+This project relies on following to packages
+* [Workflow](https://github.com/byCrookie/Workflow)
+* [Workflow.Autofac](https://github.com/byCrookie/Workflow.Autofac)
+
 ## Features
 
 * Building workflows (mainly Console-Apps)
@@ -13,12 +18,7 @@ Contains various components to build .NET apps.
 * Timers
 
 ## How to use
-
 :warning: **Packages**: Packages are not working at the moment, please build the project yourself using the sourcecode
-
-1. Reference https://nuget.pkg.github.com/byCrookie/index.json in your nuget.config or download the package
-3. Use username byCrookie and password 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
-4. Add the package to your project
 
 ## Contributing / Issues
 All contributions are welcome! If you have any issues or feature requests, either implement it yourself or create an issue, thank you.
