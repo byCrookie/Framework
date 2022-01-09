@@ -10,14 +10,14 @@ namespace Framework.Unique
 
         private static readonly Random Random = new();
 
-        public System.Guid NewGuid()
+        public Guid NewGuid()
         {
-            return System.Guid.NewGuid();
+            return Guid.NewGuid();
         }
 
         public string NewShortGuid()
         {
-            return Convert.ToBase64String(System.Guid.NewGuid().ToByteArray()).TrimEnd('=').Replace("/", "")
+            return Convert.ToBase64String(Guid.NewGuid().ToByteArray()).TrimEnd('=').Replace("/", "")
                 .Replace("+", "");
         }
 

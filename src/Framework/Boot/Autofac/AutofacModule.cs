@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Framework.Boot.Autofac.ModuleCatalog;
+using Framework.Boot.Autofac.Registration;
 
 namespace Framework.Boot.Autofac
 {
@@ -7,7 +7,7 @@ namespace Framework.Boot.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterGeneric(typeof(ModuleCatalogBootStep<>)).As(typeof(IModuleCatalogBootStep<>));
+            builder.RegisterGeneric(typeof(AutofacBootStep<,>)).As(typeof(IAutofacBootStep<,>));
 
             base.Load(builder);
         }

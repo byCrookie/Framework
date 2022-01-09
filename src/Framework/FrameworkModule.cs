@@ -18,6 +18,7 @@ namespace Framework
         protected override void Load(ContainerBuilder builder)
         {
             builder.AddWorkflow();
+            
             builder.RegisterModule<AutofacModule>();
             builder.RegisterModule<BootModule>();
             builder.RegisterModule<XmlModule>();

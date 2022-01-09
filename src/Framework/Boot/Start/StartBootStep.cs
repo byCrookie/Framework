@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using Framework.Boot.Logger;
+using Serilog;
 using Workflow;
 
 namespace Framework.Boot.Start
@@ -12,58 +11,68 @@ namespace Framework.Boot.Start
     {
         public async Task ExecuteAsync(TContext context)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Debug()
+                .CreateLogger();
+            
             var cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
-                await using (var scope = context.Container.BeginLifetimeScope(builder =>
+                await using (var scope = BeginLifetimeScope(context))
                 {
-                    foreach (var registration in context.RegistrationActions)
-                    {
-                        registration(builder);
-                    }
-                }))
-                {
-                    try
-                    {
-                        var app = scope.Resolve<IApplication>();
-                        await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
-                    }
-                    catch (Exception e)
-                    {
-                        if (scope.TryResolve<IApplicationLogger>(out var logger))
-                        {
-                            logger.Error(e.Demystify());
-                        }
-                        
-                        throw;
-                    }
+                    Log.Debug("Autofac LifeTimeScope Started");
+                    Log.Debug("Resolve Application");
+                    var app = scope.Resolve<IApplication>();
+                    Log.Information("Run Application");
+                    await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
                 }
             }
             catch (Exception e)
             {
+                Log.Fatal(e, "Error Running Application");
                 cancellationTokenSource.Cancel();
-                Console.WriteLine(e.Demystify());
                 throw;
             }
             finally
             {
+                Log.Debug("Cleanup");
+                
                 cancellationTokenSource.Dispose();
                 if (context.BootLifetimeScope is not null)
                 {
+                    Log.Debug("Dispose BootLifetimeScope");
                     await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(true);
                 }
 
                 if (context.LifetimeScope is not null)
                 {
+                    Log.Debug("Dispose LifetimeScope");
                     await context.LifetimeScope.DisposeAsync().ConfigureAwait(true);
                 }
 
                 if (context.Container is not null)
                 {
+                    Log.Debug("Dispose Container");
                     await context.Container.DisposeAsync().ConfigureAwait(true);
                 }
+
+                Log.Debug("Dispose Logger");
+                Log.CloseAndFlush();
             }
+        }
+
+        private static ILifetimeScope BeginLifetimeScope(TContext context)
+        {
+            Log.Debug("Begin Autofac LifeTimeScope");
+            return context.Container.BeginLifetimeScope(builder =>
+            {
+                foreach (var registration in context.RegistrationActions)
+                {
+                    registration(builder);
+                }
+            });
         }
 
         public Task<bool> ShouldExecuteAsync(TContext context)

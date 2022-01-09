@@ -2,20 +2,18 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Framework.Validation;
-using log4net;
+using Serilog;
 
 namespace Framework.Timer
 {
     internal class IntervalTimer : IIntervalTimer
     {
         private static Stopwatch _stopwatch;
-        private readonly ILog _logger;
         private Func<Task> _callback;
         private int _interval;
 
-        public IntervalTimer(ILog logger)
+        public IntervalTimer()
         {
-            _logger = logger;
             _stopwatch = new Stopwatch();
         }
 
@@ -34,7 +32,7 @@ namespace Framework.Timer
             
             if (_stopwatch.Elapsed.Minutes >= _interval)
             {
-                _logger.Debug($"Execute interval {_interval} timer after {_stopwatch.Elapsed.Minutes} minutes");
+                Log.Debug($"Execute interval {_interval} timer after {_stopwatch.Elapsed.Minutes} minutes");
                 _callback();
                 _stopwatch.Restart();
             }

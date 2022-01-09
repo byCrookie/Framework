@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Autofac;
-using Framework.Autofac.Logger;
-using log4net;
+using Serilog;
 using Workflow;
 
 namespace Framework.Boot.Logger
@@ -12,14 +10,7 @@ namespace Framework.Boot.Logger
 
         public Task ExecuteAsync(TContext context)
         {
-            var action = Log4NetConfigurator.Configure(_options.Log4NetConfigurationFile);
-            
-            context.RegistrationActions.Add(action);
-
-            context.RegistrationActions.Add(builder => builder.RegisterType<ApplicationLogger>()
-                .WithParameter("logger", LogManager.GetLogger(typeof(IApplication)).Logger)
-                .As<IApplicationLogger>());
-
+            Log.Logger = _options.Configuration.CreateLogger();
             return Task.CompletedTask;
         }
 
