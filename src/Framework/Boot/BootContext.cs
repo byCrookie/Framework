@@ -5,7 +5,7 @@ using Workflow;
 
 namespace Framework.Boot
 {
-    internal class BootContext : WorkflowBaseContext, IBootContext
+    public class BootContext : WorkflowBaseContext, IBootContext
     {
         public BootContext(IContainer container, ILifetimeScope bootLifetimeScope)
         {

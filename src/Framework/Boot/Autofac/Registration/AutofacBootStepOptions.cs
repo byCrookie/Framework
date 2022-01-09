@@ -1,8 +1,8 @@
 ﻿namespace Framework.Boot.Autofac.Registration
 {
-    public abstract class AutofacBootStepOptions
+    public class AutofacBootStepOptions
     {
-        protected AutofacBootStepOptions()
+        public AutofacBootStepOptions()
         {
             Autofac = new AutofacBuilder();
         }

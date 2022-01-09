@@ -2,9 +2,9 @@
 
 namespace Framework.Boot.Logger
 {
-    public abstract class LoggerBootStepOptions
+    public class LoggerBootStepOptions
     {
-        protected LoggerBootStepOptions()
+        public LoggerBootStepOptions()
         {
             Configuration = new LoggerConfiguration();
         }
