@@ -2,7 +2,7 @@
 
 namespace Framework.Xml
 {
-	public class XmlParseException : Exception
+	internal class XmlParseException : Exception
 	{
 		public XmlParseException(string message, Exception argumentException) : base(message, argumentException) { }
 	}

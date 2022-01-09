@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using Autofac.Core;
 
-namespace Framework.Boot.Autofac.ModuleCatalog
+namespace Framework.Boot.Autofac
 {
     public class ModuleCatalog
     {
-        public ModuleCatalog()
+        protected ModuleCatalog()
         {
             Modules = new List<IModule>();
         }
 
-        public IList<IModule> Modules { get; set; }
+        public List<IModule> Modules { get; }
 
         protected void AddRootModule(IModule module)
         {

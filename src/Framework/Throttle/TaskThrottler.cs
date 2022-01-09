@@ -6,25 +6,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using Framework.Extensions.List;
 using Framework.Validation;
-using log4net;
+using Serilog;
 
 namespace Framework.Throttle
 {
     internal class TaskThrottler : ITaskThrottler
     {
-        private readonly ILog _logger;
-
-        public TaskThrottler(ILog logger)
-        {
-            _logger = logger;
-        }
-
         public async Task<IEnumerable<T>> ThrottleAsync<T>(IEnumerable<Func<Task<T>>> tasks,
             ThrottleLimit throttleLimit, CancellationToken cancellationToken)
         {
-            _logger.Debug($"Throttle with limit {throttleLimit.Limit} and {throttleLimit.Weight} in period {throttleLimit.Period}");
+            Log.Debug($"Throttle with limit {throttleLimit.Limit} and {throttleLimit.Weight} in period {throttleLimit.Period}");
             var maxGroupSize = throttleLimit.Limit / throttleLimit.Weight;
-            _logger.Debug($"Throttle with group size {maxGroupSize}");
+            Log.Debug($"Throttle with group size {maxGroupSize}");
             Validate.IsTrue(maxGroupSize >= 1, nameof(maxGroupSize));
             var groups = tasks.Group(maxGroupSize).ToList();
 
@@ -74,13 +67,13 @@ namespace Framework.Throttle
             if (groupSize == maxGroupSize)
             {
                 var timeToWait = throttleLimit.Period - timer.Elapsed.Seconds;
-                _logger.Debug($"Wait for {timeToWait}s");
+                Log.Debug($"Wait for {timeToWait}s");
                 return Task.Delay(GetTimeToWait(timeToWait));
             }
             else
             {
                 var timeToWait = throttleLimit.Period / (maxGroupSize / groupSize) - timer.Elapsed.Seconds;
-                _logger.Debug($"Wait for {timeToWait}s");
+                Log.Debug($"Wait for {timeToWait}s");
                 return Task.Delay(GetTimeToWait(timeToWait));
             }
         }
