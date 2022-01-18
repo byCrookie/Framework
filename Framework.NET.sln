@@ -6,12 +6,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{825D7CF6-7F1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "src\Framework\Framework.csproj", "{6207860A-293B-4104-8AF9-44C195DE8E40}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{EA710D4F-26B3-4D0F-B4FE-CE882B19E357}"
-ProjectSection(SolutionItems) = preProject
-	Packages\Workflow.1.0.12.nupkg = Packages\Workflow.1.0.12.nupkg
-	Packages\Workflow.Autofac.1.0.13.nupkg = Packages\Workflow.Autofac.1.0.13.nupkg
-EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
