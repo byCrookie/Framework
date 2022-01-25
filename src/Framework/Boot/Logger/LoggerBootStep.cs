@@ -1,27 +1,25 @@
-﻿using System.Threading.Tasks;
-using Serilog;
+﻿using Serilog;
 using Workflow;
 
-namespace Framework.Boot.Logger
+namespace Framework.Boot.Logger;
+
+internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
 {
-    internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
+    private LoggerBootStepOptions? _options;
+
+    public Task ExecuteAsync(TContext context)
     {
-        private LoggerBootStepOptions _options;
+        Log.Logger = _options?.Configuration.CreateLogger();
+        return Task.CompletedTask;
+    }
 
-        public Task ExecuteAsync(TContext context)
-        {
-            Log.Logger = _options.Configuration.CreateLogger();
-            return Task.CompletedTask;
-        }
+    public Task<bool> ShouldExecuteAsync(TContext context)
+    {
+        return Task.FromResult(true);
+    }
 
-        public Task<bool> ShouldExecuteAsync(TContext context)
-        {
-            return Task.FromResult(true);
-        }
-
-        public void SetOptions(TOptions options)
-        {
-            _options = options as LoggerBootStepOptions;
-        }
+    public void SetOptions(TOptions options)
+    {
+        _options = options as LoggerBootStepOptions;
     }
 }

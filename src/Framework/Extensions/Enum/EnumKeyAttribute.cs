@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
 
-namespace Framework.Extensions.Enum
+namespace Framework.Extensions.Enum;
+
+public class EnumKeyAttribute : DescriptionAttribute
 {
-    public class EnumKeyAttribute : DescriptionAttribute
+    public EnumKeyAttribute(string buy) : base(buy)
     {
-        public EnumKeyAttribute(string buy) : base(buy)
-        {
-        }
     }
 }

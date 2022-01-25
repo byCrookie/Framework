@@ -1,12 +1,11 @@
 ﻿using Framework.Boot.Autofac;
 
-namespace Framework
+namespace Framework;
+
+public class FrameworkModuleCatalog : ModuleCatalog
 {
-    public class FrameworkModuleCatalog : ModuleCatalog
+    public FrameworkModuleCatalog()
     {
-        public FrameworkModuleCatalog()
-        {
-            AddRootModule(new FrameworkModule());
-        }
+        AddRootModule(new FrameworkModule());
     }
 }

@@ -1,83 +1,76 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Serilog;
 using Workflow;
 
-namespace Framework.Boot.Start
+namespace Framework.Boot.Start;
+
+internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IBootContext
 {
-    internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IBootContext
+    public async Task ExecuteAsync(TContext context)
     {
-        public async Task ExecuteAsync(TContext context)
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Debug()
+            .CreateLogger();
+
+        var cancellationTokenSource = new CancellationTokenSource();
+
+        try
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Debug()
-                .CreateLogger();
-            
-            var cancellationTokenSource = new CancellationTokenSource();
-
-            try
+            await using (var scope = BeginLifetimeScope(context))
             {
-                await using (var scope = BeginLifetimeScope(context))
-                {
-                    Log.Debug("Autofac LifeTimeScope Started");
-                    Log.Debug("Resolve Application");
-                    var app = scope.Resolve<IApplication>();
-                    Log.Information("Run Application");
-                    await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
-                }
-            }
-            catch (Exception e)
-            {
-                Log.Fatal(e, "Error Running Application");
-                cancellationTokenSource.Cancel();
-                throw;
-            }
-            finally
-            {
-                Log.Debug("Cleanup");
-                
-                cancellationTokenSource.Dispose();
-                if (context.BootLifetimeScope is not null)
-                {
-                    Log.Debug("Dispose BootLifetimeScope");
-                    await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(true);
-                }
-
-                if (context.LifetimeScope is not null)
-                {
-                    Log.Debug("Dispose LifetimeScope");
-                    await context.LifetimeScope.DisposeAsync().ConfigureAwait(true);
-                }
-
-                if (context.Container is not null)
-                {
-                    Log.Debug("Dispose Container");
-                    await context.Container.DisposeAsync().ConfigureAwait(true);
-                }
-
-                Log.Debug("Dispose Logger");
-                Log.CloseAndFlush();
+                Log.Debug("Autofac LifeTimeScope Started");
+                Log.Debug("Resolve Application");
+                var app = scope.Resolve<IApplication>();
+                Log.Information("Run Application");
+                await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
             }
         }
-
-        private static ILifetimeScope BeginLifetimeScope(TContext context)
+        catch (Exception e)
         {
-            Log.Debug("Begin Autofac LifeTimeScope");
-            return context.Container.BeginLifetimeScope(builder =>
+            Log.Fatal(e, "Error Running Application");
+            cancellationTokenSource.Cancel();
+            throw;
+        }
+        finally
+        {
+            Log.Debug("Cleanup");
+
+            cancellationTokenSource.Dispose();
+
+            Log.Debug("Dispose BootLifetimeScope");
+            await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(true);
+
+            if (context.LifetimeScope is not null)
             {
-                foreach (var registration in context.RegistrationActions)
-                {
-                    registration(builder);
-                }
-            });
-        }
+                Log.Debug("Dispose LifetimeScope");
+                await context.LifetimeScope.DisposeAsync().ConfigureAwait(true);
+            }
 
-        public Task<bool> ShouldExecuteAsync(TContext context)
-        {
-            return Task.FromResult(true);
+            Log.Debug("Dispose Container");
+            await context.Container.DisposeAsync().ConfigureAwait(true);
+
+            Log.Debug("Dispose Logger");
+            Log.CloseAndFlush();
         }
+    }
+
+    private static ILifetimeScope BeginLifetimeScope(TContext context)
+    {
+        Log.Debug("Begin Autofac LifeTimeScope");
+
+
+        return context.Container.BeginLifetimeScope(builder =>
+        {
+            foreach (var registration in context.RegistrationActions)
+            {
+                registration(builder);
+            }
+        });
+    }
+
+    public Task<bool> ShouldExecuteAsync(TContext context)
+    {
+        return Task.FromResult(true);
     }
 }

@@ -1,43 +1,35 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Framework.Validation;
 using Serilog;
 
-namespace Framework.Timer
+namespace Framework.Timer;
+
+internal class IntervalTimer : IIntervalTimer
 {
-    internal class IntervalTimer : IIntervalTimer
+    private static readonly Stopwatch Stopwatch = new();
+    private Func<Task> _callback = () => Task.CompletedTask;
+    private int _interval;
+
+    public IIntervalTimer Run(int interval, Func<Task> callback)
     {
-        private static Stopwatch _stopwatch;
-        private Func<Task> _callback;
-        private int _interval;
+        _interval = interval;
+        _callback = callback;
+        Stopwatch.Start();
+        return this;
+    }
 
-        public IntervalTimer()
-        {
-            _stopwatch = new Stopwatch();
-        }
-
-        public IIntervalTimer Run(int interval, Func<Task> callback)
-        {
-            _interval = interval;
-            _callback = callback;
-            _stopwatch.Start();
-            return this;
-        }
-
-        public Task CheckAsync()
-        {
-            Validate.NotNull(_interval, nameof(_interval));
-            Validate.NotNull(_callback, nameof(_callback));
+    public Task CheckAsync()
+    {
+        Validate.NotNull(_interval, nameof(_interval));
+        Validate.NotNull(_callback, nameof(_callback));
             
-            if (_stopwatch.Elapsed.Minutes >= _interval)
-            {
-                Log.Debug($"Execute interval {_interval} timer after {_stopwatch.Elapsed.Minutes} minutes");
-                _callback();
-                _stopwatch.Restart();
-            }
-            
-            return Task.CompletedTask;
+        if (Stopwatch.Elapsed.Minutes >= _interval)
+        {
+            Log.Debug("Execute interval {0} timer after {1} minutes", _interval, Stopwatch.Elapsed.Minutes);
+            _callback();
+            Stopwatch.Restart();
         }
+            
+        return Task.CompletedTask;
     }
 }

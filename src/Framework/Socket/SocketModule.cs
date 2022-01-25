@@ -1,14 +1,13 @@
 ﻿using Autofac;
 
-namespace Framework.Socket
+namespace Framework.Socket;
+
+internal class SocketModule : Module
 {
-    internal class SocketModule : Module
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterType<WebSocketClient>().As<IWebSocketClient>();
+        builder.RegisterType<WebSocketClient>().As<IWebSocketClient>();
             
-            base.Load(builder);
-        }
+        base.Load(builder);
     }
 }

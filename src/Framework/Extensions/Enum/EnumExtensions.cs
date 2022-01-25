@@ -1,59 +1,73 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using Framework.Validation;
 
-namespace Framework.Extensions.Enum
+namespace Framework.Extensions.Enum;
+
+public static class EnumExtensions
 {
-    public static class EnumExtensions
+    public static string GetDescription<TEnum>(this TEnum source) where TEnum : notnull
     {
-        public static string GetDescription<TEnum>(this TEnum source)
+        Validate.NotNull(source, nameof(source));
+        var field = source.GetType().GetField(source.ToString()!);
+        var customAttributes = field?.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        if (customAttributes is null) throw new ArgumentException($"Enum {typeof(TEnum).Name} has no attributes");
+        var attributes = (DescriptionAttribute[])customAttributes;
+        if (attributes.Length > 0)
         {
-            Validate.NotNull(source, nameof(source));
-            var fi = source.GetType().GetField(source.ToString()!);
-            var attributes = (DescriptionAttribute[])fi?.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return attributes is {Length: > 0} ? attributes[0].Description : source.ToString();
+            return attributes[0].Description;
         }
+        
+        return source.ToString() ?? string.Empty;
+    }
 
-        public static string GetKey<TEnum>(this TEnum source)
+    public static string GetKey<TEnum>(this TEnum source) where TEnum : notnull
+    {
+        Validate.NotNull(source, nameof(source));
+        var field = source.GetType().GetField(source.ToString()!);
+        var customAttributes = field?.GetCustomAttributes(typeof(EnumKeyAttribute), false);
+        if (customAttributes is null) throw new ArgumentException($"Enum {typeof(TEnum).Name} has no attributes");
+        var attributes = (EnumKeyAttribute[])customAttributes;
+
+        if (attributes.Length > 0)
         {
-            Validate.NotNull(source, nameof(source));
-            var fi = source.GetType().GetField(source.ToString()!);
-            var attributes = (EnumKeyAttribute[])fi?.GetCustomAttributes(typeof(EnumKeyAttribute), false);
-            return attributes is {Length: > 0} ? attributes[0].Description : source.ToString();
+            return attributes[0].Description;
         }
+        
+        return source.ToString() ?? string.Empty;
+    }
 
-        public static T ToEnumByKey<T>(this string value)
+    public static T ToEnumByKey<T>(this string value)
+    {
+        foreach (var enumValue in typeof(T).GetEnumValues())
         {
-            foreach (var enumValue in typeof(T).GetEnumValues())
+            var field = typeof(T).GetField(enumValue.ToString()!);
+            var customAttributes = field?.GetCustomAttributes(typeof(EnumKeyAttribute), false);
+            if (customAttributes is null) throw new ArgumentException($"Enum {typeof(T).Name} has no attributes");
+            var keyAttributes = (EnumKeyAttribute[])customAttributes;
+            if (keyAttributes?.Any(a => a.Description == value) ?? false)
             {
-                var field = typeof(T).GetField(enumValue.ToString()!);
-                var keyAttributes = (EnumKeyAttribute[])field?.GetCustomAttributes(typeof(EnumKeyAttribute), false);
-                if (keyAttributes?.Any(a => a.Description == value) ?? false)
-                {
-                    return (T) enumValue;
-                }
+                return (T)enumValue;
             }
-
-            throw new ArgumentException($"Can not convert value {value} to enum {typeof(T)} by key");
         }
 
-        public static T ToEnumByDescription<T>(this string value) where T : System.Enum
+        throw new ArgumentException($"Can not convert value {value} to enum {typeof(T)} by key");
+    }
+
+    public static T ToEnumByDescription<T>(this string value) where T : System.Enum
+    {
+        foreach (var enumValue in typeof(T).GetEnumValues())
         {
-            foreach (var enumValue in typeof(T).GetEnumValues())
+            if (enumValue.GetDescription() == value)
             {
-                if (enumValue.GetDescription() == value)
-                {
-                    return (T) enumValue;
-                }
+                return (T)enumValue;
             }
-
-            throw new ArgumentException($"Can not convert value {value} to enum {typeof(T)} by description");
         }
 
-        public static T ToEnumByValue<T>(this string value)
-        {
-            return (T) System.Enum.Parse(typeof(T), value, true);
-        }
+        throw new ArgumentException($"Can not convert value {value} to enum {typeof(T)} by description");
+    }
+
+    public static T ToEnumByValue<T>(this string value)
+    {
+        return (T)System.Enum.Parse(typeof(T), value, true);
     }
 }

@@ -1,14 +1,13 @@
 ﻿using Autofac;
 
-namespace Framework.Timer
+namespace Framework.Timer;
+
+internal class TimerModule : Module
 {
-    internal class TimerModule : Module
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterType<IntervalTimer>().As<IIntervalTimer>();
+        builder.RegisterType<IntervalTimer>().As<IIntervalTimer>();
             
-            base.Load(builder);
-        }
+        base.Load(builder);
     }
 }

@@ -1,12 +1,11 @@
 using AutoFixture.Kernel;
 
-namespace Framework.Extensions.Fixture
+namespace Framework.Extensions.Fixture;
+
+public class OmitSpecimenBuilder : ISpecimenBuilder
 {
-    public class OmitSpecimenBuilder : ISpecimenBuilder
+    public object Create(object request, ISpecimenContext context)
     {
-        public object Create(object request, ISpecimenContext context)
-        {
-            return new OmitSpecimen();
-        }
+        return new OmitSpecimen();
     }
 }

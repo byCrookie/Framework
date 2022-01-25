@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace Framework.Xml;
 
-namespace Framework.Xml
+internal class XmlParseException : Exception
 {
-	internal class XmlParseException : Exception
-	{
-		public XmlParseException(string message, Exception argumentException) : base(message, argumentException) { }
-	}
+	public XmlParseException(string message, Exception argumentException) : base(message, argumentException) { }
 }

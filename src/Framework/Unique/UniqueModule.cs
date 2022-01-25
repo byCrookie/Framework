@@ -1,14 +1,13 @@
 ﻿using Autofac;
 
-namespace Framework.Unique
+namespace Framework.Unique;
+
+internal class UniqueModule : Module
 {
-    internal class UniqueModule : Module
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterType<UniqueGenerator>().As<IUniqueGenerator>();
+        builder.RegisterType<UniqueGenerator>().As<IUniqueGenerator>();
             
-            base.Load(builder);
-        }
+        base.Load(builder);
     }
 }

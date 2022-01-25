@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 
-namespace Framework.Boot
+namespace Framework.Boot;
+
+public interface IBootContext
 {
-    public interface IBootContext
-    {
-        IContainer Container { get; set; }
-        IList<Action<ContainerBuilder>> RegistrationActions { get; set; }
-        ILifetimeScope BootLifetimeScope { get; set; }
-        ILifetimeScope LifetimeScope { get; set; }
-    }
+    IContainer Container { get; set; }
+    IList<Action<ContainerBuilder>> RegistrationActions { get; set; }
+    ILifetimeScope BootLifetimeScope { get; set; }
+    ILifetimeScope? LifetimeScope { get; set; }
 }

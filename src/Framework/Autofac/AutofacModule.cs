@@ -1,15 +1,14 @@
 ﻿using Autofac;
 using Framework.Autofac.Factory;
 
-namespace Framework.Autofac
+namespace Framework.Autofac;
+
+internal class AutofacModule : Module
 {
-    internal class AutofacModule : Module
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterModule<FactoryModule>();
+        builder.RegisterModule<FactoryModule>();
             
-            base.Load(builder);
-        }
+        base.Load(builder);
     }
 }

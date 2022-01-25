@@ -1,34 +1,33 @@
 ﻿using Autofac;
 
-namespace Framework.Autofac.Factory
+namespace Framework.Autofac.Factory;
+
+internal class KeyedFactory : IKeyedFactory
 {
-    internal class KeyedFactory : IKeyedFactory
+    private readonly IComponentContext _componentContext;
+
+    public KeyedFactory(IComponentContext componentContext)
     {
-        private readonly IComponentContext _componentContext;
-
-        public KeyedFactory(IComponentContext componentContext)
-        {
-            _componentContext = componentContext;
-        }
-
-        public T Create<T, TKey>(TKey key)
-        {
-            return _componentContext.ResolveKeyed<T>(key);
-        }
+        _componentContext = componentContext;
     }
-    
-    internal class KeyedFactory<T> : IKeyedFactory<T>
+
+    public T Create<T, TKey>(TKey key) where T : notnull where TKey : notnull
     {
-        private readonly IComponentContext _componentContext;
+        return _componentContext.ResolveKeyed<T>(key);
+    }
+}
 
-        public KeyedFactory(IComponentContext componentContext)
-        {
-            _componentContext = componentContext;
-        }
+internal class KeyedFactory<T> : IKeyedFactory<T> where T : notnull
+{
+    private readonly IComponentContext _componentContext;
 
-        public T Create<TKey>(TKey key)
-        {
-            return _componentContext.ResolveKeyed<T>(key);
-        }
+    public KeyedFactory(IComponentContext componentContext)
+    {
+        _componentContext = componentContext;
+    }
+
+    public T Create<TKey>(TKey key) where TKey : notnull
+    {
+        return _componentContext.ResolveKeyed<T>(key);
     }
 }

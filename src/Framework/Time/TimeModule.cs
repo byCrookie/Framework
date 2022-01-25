@@ -1,14 +1,13 @@
 ﻿using Autofac;
 
-namespace Framework.Time
+namespace Framework.Time;
+
+internal class TimeModule : Module
 {
-    internal class TimeModule : Module
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterType<DateTimeProvider>().As<IDateTimeProvider>();
+        builder.RegisterType<DateTimeProvider>().As<IDateTimeProvider>();
             
-            base.Load(builder);
-        }
+        base.Load(builder);
     }
 }

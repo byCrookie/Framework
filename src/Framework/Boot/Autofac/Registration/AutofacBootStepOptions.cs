@@ -1,12 +1,11 @@
-﻿namespace Framework.Boot.Autofac.Registration
+﻿namespace Framework.Boot.Autofac.Registration;
+
+public class AutofacBootStepOptions
 {
-    public class AutofacBootStepOptions
+    public AutofacBootStepOptions()
     {
-        public AutofacBootStepOptions()
-        {
-            Autofac = new AutofacBuilder();
-        }
-        
-        public AutofacBuilder Autofac { get; set; }
+        Autofac = new AutofacBuilder();
     }
+        
+    public AutofacBuilder Autofac { get; set; }
 }

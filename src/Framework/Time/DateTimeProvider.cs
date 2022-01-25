@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace Framework.Time;
 
-namespace Framework.Time
+internal class DateTimeProvider : IDateTimeProvider
 {
-    internal class DateTimeProvider : IDateTimeProvider
+    public DateTime Now()
     {
-        public DateTime Now()
-        {
-            return DateTime.Now;
-        }
+        return DateTime.Now;
     }
 }

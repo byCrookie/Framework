@@ -1,40 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Autofac;
+﻿using Autofac;
 using Workflow;
 
-namespace Framework.Boot.Autofac
+namespace Framework.Boot.Autofac;
+
+public static class BootConfiguration
 {
-    public static class BootConfiguration
+    public static BootScope<T> Configure<T>() where T : WorkflowBaseContext
     {
-        public static BootScope<T> Configure<T>() where T : WorkflowBaseContext
-        {
-            return Configure<T>(Enumerable.Empty<Module>());
-        }
+        return Configure<T>(Enumerable.Empty<Module>());
+    }
 
-        public static BootScope<T> Configure<T>(IEnumerable<Module> modules) where T : WorkflowBaseContext
-        {
-            var builder = new ContainerBuilder();
-            var container = builder.Build();
+    public static BootScope<T> Configure<T>(IEnumerable<Module> modules) where T : WorkflowBaseContext
+    {
+        var builder = new ContainerBuilder();
+        var container = builder.Build();
             
-            var bootLifeTimeScope = container.BeginLifetimeScope(bootContainer =>
+        var bootLifeTimeScope = container.BeginLifetimeScope(bootContainer =>
+        {
+            bootContainer.RegisterModule<FrameworkModule>();
+
+            foreach (var module in modules)
             {
-                bootContainer.RegisterModule<FrameworkModule>();
+                bootContainer.RegisterModule(module);
+            }
+        });
 
-                foreach (var module in modules)
-                {
-                    bootContainer.RegisterModule(module);
-                }
-            });
+        var workflowBuilder = bootLifeTimeScope.Resolve<IWorkflowBuilder<T>>();
 
-            var workflowBuilder = bootLifeTimeScope.Resolve<IWorkflowBuilder<T>>();
-
-            return new BootScope<T>
-            {
-                LifeTimeScope = bootLifeTimeScope,
-                Container = container,
-                WorkflowBuilder = workflowBuilder
-            };
-        }
+        return new BootScope<T>
+        {
+            LifeTimeScope = bootLifeTimeScope,
+            Container = container,
+            WorkflowBuilder = workflowBuilder
+        };
     }
 }

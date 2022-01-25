@@ -1,10 +1,9 @@
 ﻿using Workflow;
 
-namespace Framework.Boot.Autofac.Registration
+namespace Framework.Boot.Autofac.Registration;
+
+public interface
+    IAutofacBootStep<in TContext, in TOptions> : IWorkflowOptionsStep<TContext, TOptions>
+    where TContext : WorkflowBaseContext, IBootContext
 {
-    public interface
-        IAutofacBootStep<in TContext, in TOptions> : IWorkflowOptionsStep<TContext, TOptions>
-        where TContext : WorkflowBaseContext, IBootContext
-    {
-    }
 }

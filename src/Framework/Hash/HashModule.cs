@@ -1,14 +1,13 @@
 ﻿using Autofac;
 
-namespace Framework.Hash
+namespace Framework.Hash;
+
+internal class HashModule : Module
 {
-    internal class HashModule : Module
+    protected override void Load(ContainerBuilder builder)
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterType<HashGenerator>().As<IHashGenerator>();
+        builder.RegisterType<HashGenerator>().As<IHashGenerator>();
             
-            base.Load(builder);
-        }
+        base.Load(builder);
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace Framework.Unique
+﻿namespace Framework.Unique;
+
+public interface IUniqueGenerator
 {
-    public interface IUniqueGenerator
-    {
-        System.Guid NewGuid();
-        string NewShortGuid();
-        string GetBase62(int length = 10);
-    }
+    System.Guid NewGuid();
+    string NewShortGuid();
+    string GetBase62(int length = 10);
 }

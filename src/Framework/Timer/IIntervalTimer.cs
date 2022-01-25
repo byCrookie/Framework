@@ -1,11 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿namespace Framework.Timer;
 
-namespace Framework.Timer
+public interface IIntervalTimer
 {
-    public interface IIntervalTimer
-    {
-        IIntervalTimer Run(int interval, Func<Task> callback);
-        Task CheckAsync();
-    }
+    IIntervalTimer Run(int interval, Func<Task> callback);
+    Task CheckAsync();
 }
