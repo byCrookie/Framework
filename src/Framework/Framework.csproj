@@ -2,17 +2,20 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        
+
+        <PackageId>Framework.NET</PackageId>
+
         <Title>Framework.NET</Title>
         <Authors>byCrookie</Authors>
-        <Description>base-framework for c# applications</Description>
-        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
-        <RootNamespace>Framework</RootNamespace>
-        <RepositoryType>Github</RepositoryType>
-        <RepositoryUrl>https://github.com/byCrookie/Framework.NET</RepositoryUrl>
-        <PackageId>Framework.NET</PackageId>
         <PackageTags>framework;boot;utilities</PackageTags>
+        <Description>base-framework for c# applications</Description>
+
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/byCrookie/Framework.NET</RepositoryUrl>
+
+        <Copyright>https://github.com/byCrookie/Framework.NET/blob/main/LICENSE</Copyright>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
