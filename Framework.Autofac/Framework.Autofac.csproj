@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+
+        <PackageId>Framework.Autofac</PackageId>
+
+        <Title>Framework.Autofac</Title>
+        <Authors>byCrookie</Authors>
+        <PackageTags>framework;boot;utilities;autofac</PackageTags>
+        <Description>autofac boot base-framework for c# applications</Description>
+
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/byCrookie/Framework.NET</RepositoryUrl>
+
+        <Copyright>https://github.com/byCrookie/Framework.NET/blob/main/LICENSE</Copyright>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.3.0" />
+      <PackageReference Include="buildsdk" Version="1.0.0-pre-20220125064715" />
+      <PackageReference Include="framework" Version="1.0.0-pre-202201272227" />
+      <PackageReference Include="Serilog" Version="2.10.0" />
+      <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
+      <PackageReference Include="workflow" Version="1.0.0-pre-202201254848" />
+    </ItemGroup>
+
+</Project>
