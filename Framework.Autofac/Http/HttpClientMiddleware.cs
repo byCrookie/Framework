@@ -2,7 +2,7 @@
 using Autofac.Core;
 using Autofac.Core.Resolving.Pipeline;
 
-namespace Framework.Http;
+namespace Framework.Autofac.Http;
 
 public class HttpClientMiddleware<TService> : IResolveMiddleware
 {

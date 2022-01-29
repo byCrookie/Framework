@@ -5,6 +5,6 @@ namespace Framework.Jab.Unique;
 
 [ServiceProviderModule]
 [Transient(typeof(IUniqueGenerator), typeof(UniqueGenerator))]
-internal partial interface IUniqueModule
+public partial interface IUniqueModule
 {
 }

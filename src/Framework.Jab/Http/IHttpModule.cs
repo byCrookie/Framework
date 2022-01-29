@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Jab;
+﻿using Jab;
 
 namespace Framework.Jab.Http;
 

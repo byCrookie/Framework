@@ -1,4 +1,5 @@
-﻿using Jab;
+﻿using Framework.DependencyInjection.Factory;
+using Jab;
 
 namespace Framework.Jab.Jab.Factory;
 

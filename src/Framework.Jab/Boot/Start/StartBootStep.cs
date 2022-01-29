@@ -16,14 +16,14 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
 
         try
         {
-            await using (var scope = BeginScope(context))
+            Log.Debug("Autofac LifeTimeScope Started");
+            Log.Debug("Resolve Application");
+            if (context.ServiceProvider.GetService(typeof(IApplication)) is not IApplication app)
             {
-                Log.Debug("Autofac LifeTimeScope Started");
-                Log.Debug("Resolve Application");
-                var app = scope.GetService<IApplication>();
-                Log.Information("Run Application");
-                await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
+                throw new ArgumentException($"Can not resolve {nameof(IApplication)}");
             }
+            Log.Information("Run Application");
+            await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
         }
         catch (Exception e)
         {
@@ -37,18 +37,9 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
 
             cancellationTokenSource.Dispose();
 
-            Log.Debug("Dispose Service Provider");
-            await context.ServiceProvider.DisposeAsync().ConfigureAwait(true);
-
             Log.Debug("Dispose Logger");
             Log.CloseAndFlush();
         }
-    }
-
-    private static DefaultServiceProvider.Scope BeginScope(TContext context)
-    {
-        Log.Debug("Begin Jab Scope");
-        return context.ServiceProvider.CreateScope();
     }
 
     public Task<bool> ShouldExecuteAsync(TContext context)

@@ -4,10 +4,10 @@ namespace Framework.Jab.Boot;
 
 public class BootContext : WorkflowBaseContext, IBootContext
 {
-    public BootContext(DefaultServiceProvider serviceProvider)
+    public BootContext(IServiceProvider serviceProvider)
     {
         ServiceProvider = serviceProvider;
     }
         
-    public DefaultServiceProvider ServiceProvider { get; set; }
+    public IServiceProvider ServiceProvider { get; set; }
 }

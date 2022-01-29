@@ -19,10 +19,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="buildsdk" Version="1.0.0-pre-20220125064715" />
-      <PackageReference Include="framework" Version="1.0.0-pre-202201272227" />
+      <PackageReference Include="buildsdk" Version="1.0.1-pre-20220129083400" />
+      <PackageReference Include="framework" Version="1.0.1-pre-20220129084318" />
       <PackageReference Include="Jab" Version="0.6.3" />
-      <PackageReference Include="workflow.jab" Version="1.0.0-pre-202201275958" />
+      <PackageReference Include="workflow.jab" Version="1.0.1-pre-20220129083706" />
     </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using Serilog;
 
 namespace Framework.Timer;
 
-internal class IntervalTimer : IIntervalTimer
+public class IntervalTimer : IIntervalTimer
 {
     private static readonly Stopwatch Stopwatch = new();
     private Func<Task> _callback = () => Task.CompletedTask;

@@ -2,7 +2,7 @@
 
 namespace Framework.Xml;
 
-internal class XmlSerializer : IXmlSerializer
+public class XmlSerializer : IXmlSerializer
 {
 	public string Serialize<T>(T objectToParse) where T : class, new()
 	{

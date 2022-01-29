@@ -1,4 +1,4 @@
-﻿namespace Framework.Jab.Jab.Factory;
+﻿namespace Framework.DependencyInjection.Factory;
 
 public interface IFactory
 {

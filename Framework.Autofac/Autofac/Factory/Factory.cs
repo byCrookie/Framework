@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Framework.Jab.Jab.Factory;
+using Framework.DependencyInjection.Factory;
 
 namespace Framework.Autofac.Autofac.Factory;
 

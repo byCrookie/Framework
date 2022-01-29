@@ -9,7 +9,7 @@ internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TO
 
     public Task ExecuteAsync(TContext context)
     {
-        Log.Logger = _options?.Configuration.CreateLogger();
+        Log.Logger = _options?.Configuration.CreateLogger() ?? Serilog.Core.Logger.None;
         return Task.CompletedTask;
     }
 

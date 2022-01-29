@@ -2,7 +2,7 @@
 
 namespace Framework.Unique;
 
-internal class UniqueGenerator : IUniqueGenerator
+public class UniqueGenerator : IUniqueGenerator
 {
     private static readonly char[] Chars =
         "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".ToCharArray();

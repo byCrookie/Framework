@@ -1,6 +1,8 @@
-﻿namespace Framework.Jab.Jab.Factory;
+﻿using Framework.DependencyInjection.Factory;
 
-internal class Factory : IFactory
+namespace Framework.Jab.Jab.Factory;
+
+public class Factory : IFactory
 {
     private readonly IServiceProvider _serviceProvider;
 
@@ -35,7 +37,7 @@ internal class Factory : IFactory
     }
 }
 
-internal class Factory<T> : IFactory<T> where T : notnull
+public class Factory<T> : IFactory<T> where T : notnull
 {
     private readonly Func<T> _factory;
 
@@ -50,7 +52,7 @@ internal class Factory<T> : IFactory<T> where T : notnull
     }
 }
 
-internal class Factory<TParameter, T> : IFactory<TParameter, T> where T : notnull
+public class Factory<TParameter, T> : IFactory<TParameter, T> where T : notnull
 {
     private readonly Func<TParameter, T> _factory;
 
@@ -65,7 +67,7 @@ internal class Factory<TParameter, T> : IFactory<TParameter, T> where T : notnul
     }
 }
 
-internal class Factory<TParameter1, TParameter2, T> : IFactory<TParameter1, TParameter2, T> where T : notnull
+public class Factory<TParameter1, TParameter2, T> : IFactory<TParameter1, TParameter2, T> where T : notnull
 {
     private readonly Func<TParameter1, TParameter2, T> _factory;
 
@@ -80,7 +82,7 @@ internal class Factory<TParameter1, TParameter2, T> : IFactory<TParameter1, TPar
     }
 }
 
-internal class Factory<TParameter1, TParameter2, TParameter3, T> : IFactory<TParameter1, TParameter2, TParameter3, T> where T : notnull
+public class Factory<TParameter1, TParameter2, TParameter3, T> : IFactory<TParameter1, TParameter2, TParameter3, T> where T : notnull
 {
     private readonly Func<TParameter1, TParameter2, TParameter3, T> _factory;
 
@@ -95,7 +97,7 @@ internal class Factory<TParameter1, TParameter2, TParameter3, T> : IFactory<TPar
     }
 }
 
-internal class Factory<TParameter1, TParameter2, TParameter3, TParameter4, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, T> where T : notnull
+public class Factory<TParameter1, TParameter2, TParameter3, TParameter4, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, T> where T : notnull
 {
     private readonly Func<TParameter1, TParameter2, TParameter3, TParameter4, T> _factory;
 
@@ -110,7 +112,7 @@ internal class Factory<TParameter1, TParameter2, TParameter3, TParameter4, T> : 
     }
 }
 
-internal class Factory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> where T : notnull
+public class Factory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> : IFactory<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> where T : notnull
 {
     private readonly Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, T> _factory;
 

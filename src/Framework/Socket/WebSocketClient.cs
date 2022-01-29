@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Framework.Socket;
 
-internal class WebSocketClient : IWebSocketClient
+public class WebSocketClient : IWebSocketClient
 {
     public async Task<ClientWebSocket> ConnectAsync(Uri uri, CancellationToken cancellationToken)
     {

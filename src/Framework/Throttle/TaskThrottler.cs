@@ -5,7 +5,7 @@ using Serilog;
 
 namespace Framework.Throttle;
 
-internal class TaskThrottler : ITaskThrottler
+public class TaskThrottler : ITaskThrottler
 {
     public async Task<IEnumerable<T>> ThrottleAsync<T>(IEnumerable<Func<Task<T>>> tasks,
         ThrottleLimit throttleLimit, CancellationToken cancellationToken)

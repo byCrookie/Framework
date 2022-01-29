@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Framework.Hash;
 
-internal class HashGenerator : IHashGenerator
+public class HashGenerator : IHashGenerator
 {
     public string HmacSha256(string key, string message)
     {

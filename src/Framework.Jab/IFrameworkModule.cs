@@ -14,8 +14,8 @@ using Workflow.Jab;
 namespace Framework.Jab;
 
 [ServiceProviderModule]
-[Import(typeof(IWorkflowModule))]
 [Import(typeof(IJabModule))]
+[Import(typeof(IWorkflowModule))]
 [Import(typeof(IBootModule))]
 [Import(typeof(IXmlModule))]
 [Import(typeof(ISocketModule))]
