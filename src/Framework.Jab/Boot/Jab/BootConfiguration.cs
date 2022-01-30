@@ -1,10 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using JetBrains.Annotations;
+using Microsoft.Extensions.DependencyInjection;
 using Workflow;
 
 namespace Framework.Jab.Boot.Jab;
 
+[UsedImplicitly]
 public static class BootConfiguration
 {
+    [UsedImplicitly]
     public static BootScope<T> Configure<T>(IServiceProvider serviceProvider) where T : WorkflowBaseContext
     {
         var workflowBuilder = serviceProvider.GetService<IWorkflowBuilder<T>>();
@@ -14,6 +17,6 @@ public static class BootConfiguration
             throw new ArgumentException($"IWorkflowBuilder of type {typeof(T).FullName} has to be registered");
         }
         
-        return new BootScope<T>(workflowBuilder, serviceProvider);
+        return new BootScope<T>(workflowBuilder);
     }
 }

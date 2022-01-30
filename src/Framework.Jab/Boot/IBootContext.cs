@@ -2,5 +2,5 @@
 
 public interface IBootContext
 {
-    IServiceProvider ServiceProvider { get; set; }
+    IServiceProvider ServiceProvider { get; }
 }

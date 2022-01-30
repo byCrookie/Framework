@@ -1,7 +1,9 @@
-﻿using Workflow;
+﻿using JetBrains.Annotations;
+using Workflow;
 
 namespace Framework.Jab.Boot;
 
+[UsedImplicitly]
 public class BootContext : WorkflowBaseContext, IBootContext
 {
     public BootContext(IServiceProvider serviceProvider)
@@ -9,5 +11,5 @@ public class BootContext : WorkflowBaseContext, IBootContext
         ServiceProvider = serviceProvider;
     }
         
-    public IServiceProvider ServiceProvider { get; set; }
+    public IServiceProvider ServiceProvider { get; }
 }

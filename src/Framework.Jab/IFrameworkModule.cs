@@ -25,6 +25,6 @@ namespace Framework.Jab;
 [Import(typeof(ITimeModule))]
 [Import(typeof(ITimerModule))]
 [Import(typeof(IUniqueModule))]
-public partial interface IFrameworkModule
+public interface IFrameworkModule
 {
 }

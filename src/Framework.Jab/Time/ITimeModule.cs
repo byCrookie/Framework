@@ -5,6 +5,6 @@ namespace Framework.Jab.Time;
 
 [ServiceProviderModule]
 [Transient(typeof(IDateTimeProvider), typeof(DateTimeProvider))]
-internal partial interface ITimeModule
+internal interface ITimeModule
 {
 }

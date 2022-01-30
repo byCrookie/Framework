@@ -11,6 +11,6 @@ namespace Framework.Jab.Jab.Factory;
 [Transient(typeof(IFactory<,,,>), typeof(Factory<,,,>))]
 [Transient(typeof(IFactory<,,,,>), typeof(Factory<,,,,>))]
 [Transient(typeof(IFactory<,,,,,>), typeof(Factory<,,,,,>))]
-internal partial interface IFactoryModule
+internal interface IFactoryModule
 {
 }

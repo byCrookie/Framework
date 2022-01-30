@@ -5,6 +5,6 @@ namespace Framework.Jab.Jab;
 
 [ServiceProviderModule]
 [Import(typeof(IFactoryModule))]
-internal partial interface IJabModule
+internal interface IJabModule
 {
 }

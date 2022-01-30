@@ -41,12 +41,6 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
             Log.Debug("Dispose BootLifetimeScope");
             await context.BootLifetimeScope.DisposeAsync().ConfigureAwait(true);
 
-            if (context.LifetimeScope is not null)
-            {
-                Log.Debug("Dispose LifetimeScope");
-                await context.LifetimeScope.DisposeAsync().ConfigureAwait(true);
-            }
-
             Log.Debug("Dispose Container");
             await context.Container.DisposeAsync().ConfigureAwait(true);
 

@@ -5,6 +5,6 @@ namespace Framework.Jab.Throttle;
 
 [ServiceProviderModule]
 [Transient(typeof(ITaskThrottler), typeof(TaskThrottler))]
-internal partial interface IThrottleModule
+internal interface IThrottleModule
 {
 }

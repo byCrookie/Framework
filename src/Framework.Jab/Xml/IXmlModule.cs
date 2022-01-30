@@ -6,6 +6,6 @@ namespace Framework.Jab.Xml;
 
 [ServiceProviderModule]
 [Transient(typeof(IXmlSerializer), typeof(XmlSerializer))]
-internal partial interface IXmlModule
+internal interface IXmlModule
 {
 }

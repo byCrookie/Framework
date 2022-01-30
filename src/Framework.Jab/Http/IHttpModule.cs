@@ -3,7 +3,7 @@
 namespace Framework.Jab.Http;
 
 [ServiceProviderModule]
-internal partial interface IHttpModule
+internal interface IHttpModule
 {
     // protected override void Load(ContainerBuilder builder)
     // {

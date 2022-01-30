@@ -7,6 +7,6 @@ namespace Framework.Jab.Boot;
 [ServiceProviderModule]
 [Import(typeof(IStartModule))]
 [Import(typeof(ILoggerModule))]
-internal partial interface IBootModule
+internal interface IBootModule
 {
 }

@@ -5,6 +5,6 @@ namespace Framework.Jab.Timer;
 
 [ServiceProviderModule]
 [Transient(typeof(IIntervalTimer), typeof(IntervalTimer))]
-internal partial interface ITimerModule
+internal interface ITimerModule
 {
 }

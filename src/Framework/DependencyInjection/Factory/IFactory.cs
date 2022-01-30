@@ -3,7 +3,7 @@
 public interface IFactory
 {
     T Create<T>() where T : notnull;
-    object? Create(Type type);
+    object Create(Type type);
     T Create<T>(Type type) where T : notnull;
 }
     

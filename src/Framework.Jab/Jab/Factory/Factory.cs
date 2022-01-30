@@ -21,9 +21,16 @@ public class Factory : IFactory
         return service;
     }
 
-    public object? Create(Type type)
+    public object Create(Type type)
     {
-        return _serviceProvider.GetService(type);
+        var service = _serviceProvider.GetService(type);
+        
+        if (service is null)
+        {
+            throw new ArgumentException($"Type {type.FullName} can not be resolved. Try register explicatly.");
+        }
+        
+        return service;
     }
 
     public T Create<T>(Type type) where T : notnull
