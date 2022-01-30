@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{825D7CF6-7F1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "src\Framework\Framework.csproj", "{6207860A-293B-4104-8AF9-44C195DE8E40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Autofac", "Framework.Autofac\Framework.Autofac.csproj", "{461E0FAB-1C28-46DE-B0AE-1CCA4DD68AD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Autofac", "src\Framework.Autofac\Framework.Autofac.csproj", "{461E0FAB-1C28-46DE-B0AE-1CCA4DD68AD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Jab", "src\Framework.Jab\Framework.Jab.csproj", "{8FEA8A13-D602-4015-9B70-D34BE8F0AA25}"
 EndProject
