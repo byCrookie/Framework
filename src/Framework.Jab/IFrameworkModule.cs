@@ -9,6 +9,7 @@ using Framework.Jab.Timer;
 using Framework.Jab.Unique;
 using Framework.Jab.Xml;
 using Jab;
+using Workflow;
 using Workflow.Jab;
 
 namespace Framework.Jab;
@@ -25,6 +26,7 @@ namespace Framework.Jab;
 [Import(typeof(ITimeModule))]
 [Import(typeof(ITimerModule))]
 [Import(typeof(IUniqueModule))]
+[Transient(typeof(IWorkflowBuilder<BootContext>), typeof(WorkflowBuilder<BootContext>))]
 public interface IFrameworkModule
 {
 }

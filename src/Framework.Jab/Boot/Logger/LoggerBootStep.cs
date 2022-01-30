@@ -3,7 +3,7 @@ using Workflow;
 
 namespace Framework.Jab.Boot.Logger;
 
-internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
+public class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
 {
     private LoggerBootStepOptions? _options;
 
