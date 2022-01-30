@@ -9,7 +9,7 @@ This project relies on following to packages
 ## Features
 
 * Building workflows (mainly Console-Apps)
-  * And prebuilt bootsteps (autofac, log4net)
+  * And prebuilt bootsteps (autofac, jab, serilog)
 * Additional extensions for lists, enums usw.
 * Wrappers around .NET classes (XML, DateTime, GUID usw.)
 * Throttler for parallel task execution using rate-limits
