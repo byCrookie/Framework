@@ -4,7 +4,6 @@ Contains various components to build .NET apps.
 ## Dependencies
 This project relies on following to packages
 * [Workflow](https://github.com/byCrookie/Workflow)
-* [Workflow.Autofac](https://github.com/byCrookie/Workflow.Autofac)
 
 ## Features
 
