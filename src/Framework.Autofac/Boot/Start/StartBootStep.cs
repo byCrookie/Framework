@@ -4,7 +4,7 @@ using Workflow;
 
 namespace Framework.Autofac.Boot.Start;
 
-internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IBootContext
+internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IInternalBootContext
 {
     public async Task ExecuteAsync(TContext context)
     {
@@ -52,8 +52,7 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
     private static ILifetimeScope BeginLifetimeScope(TContext context)
     {
         Log.Debug("Begin Autofac LifeTimeScope");
-
-
+        
         return context.Container.BeginLifetimeScope(builder =>
         {
             foreach (var registration in context.RegistrationActions)

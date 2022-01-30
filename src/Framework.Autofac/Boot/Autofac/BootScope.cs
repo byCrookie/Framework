@@ -1,15 +1,18 @@
-﻿using JetBrains.Annotations;
+﻿using Autofac;
 using Workflow;
 
 namespace Framework.Autofac.Boot.Autofac;
 
-public class BootScope<T> where T : WorkflowBaseContext
+internal class BootScope<T> : IInternalBootScope<T> where T : WorkflowBaseContext
 {
-    public BootScope(IWorkflowBuilder<T> workflowBuilder)
+    public BootScope(IContainer container, ILifetimeScope bootLifeTimeScope, IWorkflowBuilder<T> workflowBuilder)
     {
+        Container = container;
+        BootLifeTimeScope = bootLifeTimeScope;
         WorkflowBuilder = workflowBuilder;
     }
-    
-    [UsedImplicitly]
+
+    public IContainer Container { get; }
+    public ILifetimeScope BootLifeTimeScope { get; }
     public IWorkflowBuilder<T> WorkflowBuilder { get; }
 }

@@ -1,15 +1,15 @@
-﻿using JetBrains.Annotations;
-using Workflow;
+﻿using Workflow;
 
 namespace Framework.Jab.Boot.Jab;
 
-public class BootScope<T> where T : WorkflowBaseContext
+public class BootScope<T> : IInternalBootScope<T> where T : WorkflowBaseContext
 {
-    public BootScope(IWorkflowBuilder<T> workflowBuilder)
+    public BootScope(IServiceProvider serviceProvider, IWorkflowBuilder<T> workflowBuilder)
     {
+        ServiceProvider = serviceProvider;
         WorkflowBuilder = workflowBuilder;
     }
     
-    [UsedImplicitly]
+    public IServiceProvider ServiceProvider { get; }
     public IWorkflowBuilder<T> WorkflowBuilder { get; }
 }

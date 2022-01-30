@@ -3,7 +3,7 @@ using Workflow;
 
 namespace Framework.Jab.Boot.Start;
 
-internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IBootContext
+internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IInternalBootContext
 {
     public async Task ExecuteAsync(TContext context)
     {
