@@ -20,10 +20,13 @@
 
     <ItemGroup>
       <PackageReference Include="buildsdk" Version="1.0.2-pre-20220130032840" />
-      <PackageReference Include="framework" Version="1.0.2-pre-20220131074803" />
       <PackageReference Include="Jab" Version="0.6.3" />
       <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
       <PackageReference Include="workflow.jab" Version="1.0.2-pre-20220131074725" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Framework\Framework.csproj" PrivateAssets="all" />
     </ItemGroup>
 
 </Project>
