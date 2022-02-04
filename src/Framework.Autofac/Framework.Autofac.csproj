@@ -20,16 +20,16 @@
 
     <ItemGroup>
         <PackageReference Include="Autofac" Version="6.3.0" />
-        <PackageReference Include="buildsdk" Version="1.0.2-pre-20220130032840" />
+        <PackageReference Include="buildsdk" Version="1.0.2-pre-20220204091210" />
         <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.2-mauipre.1.22054.8" />
-        <PackageReference Include="Serilog" Version="2.11.0-dev-01380" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
-        <PackageReference Include="workflow.autofac" Version="1.0.2-pre-20220131074725" />
+        <PackageReference Include="workflow.autofac" Version="1.0.2-pre-20220204093720" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Framework\Framework.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\Framework\Framework.csproj" />
     </ItemGroup>
 
 </Project>
