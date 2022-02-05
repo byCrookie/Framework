@@ -11,10 +11,10 @@
         <Description>jab boot base-framework for c# applications</Description>
 
         <RepositoryType>git</RepositoryType>
-        <PackageProjectUrl>https://github.com/byCrookie/Framework.NET</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/byCrookie/Framework.NET</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/byCrookie/Framework</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/byCrookie/Framework</RepositoryUrl>
 
-        <Copyright>https://github.com/byCrookie/Framework.NET/blob/main/LICENSE</Copyright>
+        <Copyright>https://github.com/byCrookie/Framework/blob/main/LICENSE</Copyright>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     </PropertyGroup>
 
