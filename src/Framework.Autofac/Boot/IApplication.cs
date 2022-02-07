@@ -1,6 +1,6 @@
 ﻿namespace Framework.Autofac.Boot;
 
-public interface IApplication
+public interface IApplication<in TContext> where TContext : IBootContext
 {
-    Task RunAsync(CancellationToken cancellationToken);
+    Task RunAsync(TContext context, CancellationToken cancellationToken);
 }

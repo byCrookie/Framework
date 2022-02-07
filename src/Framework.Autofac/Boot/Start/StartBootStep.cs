@@ -1,18 +1,12 @@
 ﻿using Autofac;
 using Serilog;
-using Workflow;
 
 namespace Framework.Autofac.Boot.Start;
 
-internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : WorkflowBaseContext, IInternalBootContext
+internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext : BootContext
 {
     public async Task ExecuteAsync(TContext context)
     {
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .WriteTo.Debug()
-            .CreateLogger();
-
         var cancellationTokenSource = new CancellationTokenSource();
 
         try
@@ -21,9 +15,9 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
             {
                 Log.Debug("Autofac LifeTimeScope Started");
                 Log.Debug("Resolve Application");
-                var app = scope.Resolve<IApplication>();
-                Log.Information("Run Application");
-                await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
+                var app = scope.Resolve<IApplication<TContext>>();
+                Log.Debug("Run Application");
+                await app.RunAsync(context, cancellationTokenSource.Token).ConfigureAwait(true);
             }
         }
         catch (Exception e)

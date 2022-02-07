@@ -8,13 +8,13 @@ namespace Framework.Autofac.Boot.Autofac;
 public static class BootConfiguration
 {
     [UsedImplicitly]
-    public static IBootScope<T> Configure<T>() where T : WorkflowBaseContext
+    public static IBootScope<T> Configure<T>() where T : BootContext
     {
         return Configure<T>(Enumerable.Empty<Module>());
     }
 
     [UsedImplicitly]
-    public static IBootScope<T> Configure<T>(IEnumerable<Module> modules) where T : WorkflowBaseContext
+    public static IBootScope<T> Configure<T>(IEnumerable<Module> modules) where T : BootContext
     {
         var builder = new ContainerBuilder();
         var container = builder.Build();

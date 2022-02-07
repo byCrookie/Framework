@@ -1,8 +1,6 @@
-using Workflow;
-
 namespace Framework.Jab.Boot.Jab;
 
-interface IInternalBootScope<T> : IBootScope<T> where T : WorkflowBaseContext
+internal interface IInternalBootScope<T> : IBootScope<T> where T : BootContext
 {
     public IServiceProvider ServiceProvider { get; }
 }

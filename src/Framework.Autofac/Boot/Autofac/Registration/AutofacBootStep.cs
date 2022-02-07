@@ -1,11 +1,10 @@
 ﻿using Autofac;
 using Autofac.Core;
-using Workflow;
 
 namespace Framework.Autofac.Boot.Autofac.Registration;
 
 internal class AutofacBootStep<TContext, TOptions> : IAutofacBootStep<TContext, TOptions>
-    where TContext : WorkflowBaseContext, IBootContext
+    where TContext : BootContext
 {
     private AutofacBootStepOptions? _bootStepOptions;
 

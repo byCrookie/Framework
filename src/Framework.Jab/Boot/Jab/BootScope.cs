@@ -2,7 +2,7 @@
 
 namespace Framework.Jab.Boot.Jab;
 
-public class BootScope<T> : IInternalBootScope<T> where T : WorkflowBaseContext
+public class BootScope<T> : IInternalBootScope<T> where T : BootContext
 {
     public BootScope(IServiceProvider serviceProvider, IWorkflowBuilder<T> workflowBuilder)
     {

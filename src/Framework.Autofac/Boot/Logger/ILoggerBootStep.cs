@@ -3,6 +3,6 @@
 namespace Framework.Autofac.Boot.Logger;
 
 public interface ILoggerBootStep<in TContext, in TOptions> : IWorkflowOptionsStep<TContext, TOptions>
-    where TContext : WorkflowBaseContext, IBootContext
+    where TContext : BootContext
 {
 }

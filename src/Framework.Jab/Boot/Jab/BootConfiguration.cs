@@ -8,7 +8,7 @@ namespace Framework.Jab.Boot.Jab;
 public static class BootConfiguration
 {
     [UsedImplicitly]
-    public static IBootScope<T> Configure<T>(IServiceProvider serviceProvider) where T : WorkflowBaseContext
+    public static IBootScope<T> Configure<T>(IServiceProvider serviceProvider) where T : BootContext
     {
         var workflowBuilder = serviceProvider.GetService<IWorkflowBuilder<T>>();
 

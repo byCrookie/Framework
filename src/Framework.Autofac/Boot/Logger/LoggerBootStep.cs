@@ -1,15 +1,19 @@
 ﻿using Serilog;
-using Workflow;
+using Serilog.Events;
 
 namespace Framework.Autofac.Boot.Logger;
 
-internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
+internal class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : BootContext
 {
     private LoggerBootStepOptions? _options;
 
     public Task ExecuteAsync(TContext context)
     {
-        Log.Logger = _options?.Configuration.CreateLogger() ?? Serilog.Core.Logger.None;
+        var config = _options?.Configuration;
+        
+        config?.WriteTo.Debug(LogEventLevel.Debug);
+
+        Log.Logger = config?.CreateLogger() ?? Serilog.Core.Logger.None;
         return Task.CompletedTask;
     }
 

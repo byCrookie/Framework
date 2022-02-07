@@ -7,11 +7,6 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
 {
     public async Task ExecuteAsync(TContext context)
     {
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .WriteTo.Debug()
-            .CreateLogger();
-
         var cancellationTokenSource = new CancellationTokenSource();
 
         try
