@@ -20,12 +20,12 @@
 
     <ItemGroup>
         <PackageReference Include="AutoFixture" Version="4.17.0" />
-        <PackageReference Include="buildsdk" Version="1.0.3-pre-202202050835" />
+        <PackageReference Include="buildsdk" Version="1.0.4-pre-202202090710" />
         <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
         <PackageReference Include="Serilog" Version="2.10.0" />
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
-        <PackageReference Include="workflow" Version="1.0.3-pre-202202050836" />
+        <PackageReference Include="workflow" Version="1.0.4-pre-202202090716" />
     </ItemGroup>
 
     <ItemGroup>
