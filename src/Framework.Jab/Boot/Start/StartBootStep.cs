@@ -13,12 +13,12 @@ internal class StartBootStep<TContext> : IStartBootStep<TContext> where TContext
         {
             Log.Debug("Autofac LifeTimeScope Started");
             Log.Debug("Resolve Application");
-            if (context.ServiceProvider.GetService(typeof(IApplication)) is not IApplication app)
+            if (context.ServiceProvider.GetService(typeof(IApplication<TContext>)) is not IApplication<TContext> app)
             {
-                throw new ArgumentException($"Can not resolve {nameof(IApplication)}");
+                throw new ArgumentException($"Can not resolve {nameof(IApplication<TContext>)}");
             }
             Log.Information("Run Application");
-            await app.RunAsync(cancellationTokenSource.Token).ConfigureAwait(true);
+            await app.RunAsync(context, cancellationTokenSource.Token).ConfigureAwait(true);
         }
         catch (Exception e)
         {
