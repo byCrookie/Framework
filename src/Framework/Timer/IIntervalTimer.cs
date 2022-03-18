@@ -2,6 +2,6 @@
 
 public interface IIntervalTimer
 {
-    IIntervalTimer Run(int interval, Func<Task> callback);
+    IIntervalTimer Run(TimeSpan interval, Func<Task> callback);
     Task CheckAsync();
 }

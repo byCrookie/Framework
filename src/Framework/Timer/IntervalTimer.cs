@@ -8,9 +8,9 @@ public class IntervalTimer : IIntervalTimer
 {
     private static readonly Stopwatch Stopwatch = new();
     private Func<Task> _callback = () => Task.CompletedTask;
-    private int _interval;
+    private TimeSpan _interval;
 
-    public IIntervalTimer Run(int interval, Func<Task> callback)
+    public IIntervalTimer Run(TimeSpan interval, Func<Task> callback)
     {
         _interval = interval;
         _callback = callback;
@@ -23,9 +23,9 @@ public class IntervalTimer : IIntervalTimer
         Validate.NotNull(_interval, nameof(_interval));
         Validate.NotNull(_callback, nameof(_callback));
             
-        if (Stopwatch.Elapsed.Minutes >= _interval)
+        if (Stopwatch.Elapsed >= _interval)
         {
-            Log.Debug("Execute interval {0} timer after {1} minutes", _interval, Stopwatch.Elapsed.Minutes);
+            Log.Debug("Execute interval {0} timer after {1}", _interval, Stopwatch.Elapsed);
             _callback();
             Stopwatch.Restart();
         }
