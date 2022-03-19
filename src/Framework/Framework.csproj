@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
-        <PackageId>Framework</PackageId>
+        <PackageId>byCrookie.Framework</PackageId>
 
         <Title>Framework</Title>
         <Authors>byCrookie</Authors>

@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
-        <PackageId>Framework.Jab</PackageId>
+        <PackageId>byCrookie.Framework.Jab</PackageId>
 
         <Title>Framework.Jab</Title>
         <Authors>byCrookie</Authors>

@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
-        <PackageId>Framework.Autofac</PackageId>
+        <PackageId>byCrookie.Framework.Autofac</PackageId>
 
         <Title>Framework.Autofac</Title>
         <Authors>byCrookie</Authors>
