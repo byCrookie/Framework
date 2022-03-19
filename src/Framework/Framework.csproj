@@ -20,10 +20,10 @@
 
     <ItemGroup>
         <PackageReference Include="AutoFixture" Version="4.17.0" />
+        <PackageReference Include="bycrookie.nugetsdk" Version="1.0.6-pre-202203190600" />
         <PackageReference Include="bycrookie.workflow" Version="1.0.6-pre-202203190606" />
         <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-        <PackageReference Include="nugetsdk" Version="1.0.5-pre-202203190546" />
         <PackageReference Include="Serilog" Version="2.10.0" />
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
     </ItemGroup>
