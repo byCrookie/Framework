@@ -1,12 +1,6 @@
 # Framework
 Contains various components to build .NET apps.
 
-## Dependencies & Acknowledgements
-This project relies on following to packages
-* Workflow: https://github.com/byCrookie/Workflow
-* BuildSdk https://github.com/byCrookie/BuildSdk
-* Jab Dependency-Injection https://github.com/pakrym/jab
-
 ## Features
 
 * Building workflows (mainly Console-Apps)
@@ -15,6 +9,12 @@ This project relies on following to packages
 * Wrappers around .NET classes (XML, DateTime, GUID usw.)
 * Throttler for parallel task execution using rate-limits
 * Timers
+
+## Dependencies & Acknowledgements
+This project relies on following to packages
+* Workflow: https://github.com/byCrookie/Workflow
+* BuildSdk https://github.com/byCrookie/BuildSdk
+* Jab Dependency-Injection https://github.com/pakrym/jab
 
 ## How to use
 
