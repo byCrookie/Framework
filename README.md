@@ -15,6 +15,10 @@ This project relies on following to packages
 * Throttler for parallel task execution using rate-limits
 * Timers
 
+# Ackowlegements
+* [Workflow](https://github.com/byCrookie/Workflow)
+* [BuildSdk](https://github.com/byCrookie/BuildSdk)
+
 ## How to use
 
 ### Local Nuget Source
