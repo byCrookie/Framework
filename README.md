@@ -1,7 +1,7 @@
 # Framework
 Contains various components to build .NET apps.
 
-## Dependencies
+## Dependencies & Ackowlegements
 This project relies on following to packages
 * [Workflow](https://github.com/byCrookie/Workflow)
 * [BuildSdk](https://github.com/byCrookie/BuildSdk)
@@ -14,10 +14,6 @@ This project relies on following to packages
 * Wrappers around .NET classes (XML, DateTime, GUID usw.)
 * Throttler for parallel task execution using rate-limits
 * Timers
-
-# Ackowlegements
-* [Workflow](https://github.com/byCrookie/Workflow)
-* [BuildSdk](https://github.com/byCrookie/BuildSdk)
 
 ## How to use
 
