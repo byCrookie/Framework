@@ -3,9 +3,9 @@ Contains various components to build .NET apps.
 
 ## Dependencies & Acknowledgements
 This project relies on following to packages
-* [Workflow](https://github.com/byCrookie/Workflow)
-* [BuildSdk](https://github.com/byCrookie/BuildSdk)
-* [Jab Dependency-Injection](https://github.com/pakrym/jab)
+* Workflow: https://github.com/byCrookie/Workflow
+* BuildSdk https://github.com/byCrookie/BuildSdk
+* Jab Dependency-Injection https://github.com/pakrym/jab
 
 ## Features
 
