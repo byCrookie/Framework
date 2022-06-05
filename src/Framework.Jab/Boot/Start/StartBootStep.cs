@@ -11,7 +11,7 @@ public class StartBootStep<TContext> : IStartBootStep<TContext> where TContext :
 
         try
         {
-            Log.Debug("Autofac LifeTimeScope Started");
+            Log.Debug("Jab LifeTimeScope Started");
             Log.Debug("Resolve Application");
             if (context.ServiceProvider.GetService(typeof(IApplication<TContext>)) is not IApplication<TContext> app)
             {
