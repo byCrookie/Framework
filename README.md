@@ -1,11 +1,6 @@
 # Framework
 Contains various components to build .NET apps.
 
-## Dependencies
-This project relies on following to packages
-* [Workflow](https://github.com/byCrookie/Workflow)
-* [BuildSdk](https://github.com/byCrookie/BuildSdk)
-
 ## Features
 
 * Building workflows (mainly Console-Apps)
@@ -14,6 +9,12 @@ This project relies on following to packages
 * Wrappers around .NET classes (XML, DateTime, GUID usw.)
 * Throttler for parallel task execution using rate-limits
 * Timers
+
+## Dependencies & Acknowledgements
+This project relies on following to packages
+* Workflow: https://github.com/byCrookie/Workflow
+* BuildSdk https://github.com/byCrookie/BuildSdk
+* Jab Dependency-Injection https://github.com/pakrym/jab
 
 ## How to use
 
@@ -54,7 +55,8 @@ All contributions are welcome! If you have any issues or feature requests, eithe
 ## Donation
 If you like this project, feel free to donate and support the further development. Thank you.
 
-Bitcoin (BTC) Donations using Bitcoin (BTC) Network -> 14vZ2rRTEWXhvfLrxSboTN15k5XuRL1AHq
+* Bitcoin (BTC) Donations using Bitcoin (BTC) Network -> bc1qygqya2w3hgpvy8hupctfkv5x06l69ydq4su2e2
+* Ethereum (ETH) Donations using Ethereum (ETH) Network -> 0x1C0416cC1DDaAEEb3017D4b8Dcd3f0B82f4d94C1
 
 ## Docs
 
