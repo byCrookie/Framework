@@ -5,7 +5,6 @@ using Framework.Jab.Jab;
 using Framework.Jab.Socket;
 using Framework.Jab.Throttle;
 using Framework.Jab.Time;
-using Framework.Jab.Timer;
 using Framework.Jab.Unique;
 using Framework.Jab.Xml;
 using Jab;
@@ -24,7 +23,6 @@ namespace Framework.Jab;
 [Import(typeof(IHashModule))]
 [Import(typeof(IThrottleModule))]
 [Import(typeof(ITimeModule))]
-[Import(typeof(ITimerModule))]
 [Import(typeof(IUniqueModule))]
 [Transient(typeof(IWorkflowBuilder<BootContext>), typeof(WorkflowBuilder<BootContext>))]
 public interface IFrameworkModule

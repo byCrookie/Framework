@@ -6,7 +6,6 @@ using Framework.Autofac.Http;
 using Framework.Autofac.Socket;
 using Framework.Autofac.Throttle;
 using Framework.Autofac.Time;
-using Framework.Autofac.Timer;
 using Framework.Autofac.Unique;
 using Framework.Autofac.Xml;
 using Workflow.Autofac;
@@ -27,7 +26,6 @@ public class FrameworkModule : Module
         builder.RegisterModule<HashModule>();
         builder.RegisterModule<ThrottleModule>();
         builder.RegisterModule<TimeModule>();
-        builder.RegisterModule<TimerModule>();
         builder.RegisterModule<UniqueModule>();
             
         base.Load(builder);
