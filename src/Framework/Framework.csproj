@@ -7,7 +7,7 @@
 
         <Title>Framework</Title>
         <Authors>byCrookie</Authors>
-        <PackageTags>framework;boot;utilities</PackageTags>
+        <PackageTags>framework;utilities</PackageTags>
         <Description>base-framework for c# applications</Description>
 
         <RepositoryType>git</RepositoryType>

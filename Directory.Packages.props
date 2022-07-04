@@ -3,7 +3,6 @@
         <PackageVersion Include="byCrookie.NugetSdk" Version="1.0.10"/>
         <PackageVersion Include="byCrookie.Workflow" Version="1.0.7"/>
         <PackageVersion Include="byCrookie.Workflow.Jab" Version="1.0.7"/>
-        <PackageVersion Include="byCrookie.Workflow.Autofac" Version="1.0.7"/>
         <PackageVersion Include="Jab" Version="0.6.3"/>
         <PackageVersion Include="Autofac" Version="6.3.0"/>
         <PackageVersion Include="AutoFixture" Version="4.17.0"/>
