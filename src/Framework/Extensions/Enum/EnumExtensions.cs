@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using Framework.Validation;
 
 namespace Framework.Extensions.Enum;
 
@@ -7,7 +6,6 @@ public static class EnumExtensions
 {
     public static string GetDescription<TEnum>(this TEnum source) where TEnum : notnull
     {
-        Validate.NotNull(source, nameof(source));
         var field = source.GetType().GetField(source.ToString()!);
         var customAttributes = field?.GetCustomAttributes(typeof(DescriptionAttribute), false);
         if (customAttributes is null) throw new ArgumentException($"Enum {typeof(TEnum).Name} has no attributes");
@@ -22,7 +20,6 @@ public static class EnumExtensions
 
     public static string GetKey<TEnum>(this TEnum source) where TEnum : notnull
     {
-        Validate.NotNull(source, nameof(source));
         var field = source.GetType().GetField(source.ToString()!);
         var customAttributes = field?.GetCustomAttributes(typeof(EnumKeyAttribute), false);
         if (customAttributes is null) throw new ArgumentException($"Enum {typeof(TEnum).Name} has no attributes");
@@ -44,7 +41,7 @@ public static class EnumExtensions
             var customAttributes = field?.GetCustomAttributes(typeof(EnumKeyAttribute), false);
             if (customAttributes is null) throw new ArgumentException($"Enum {typeof(T).Name} has no attributes");
             var keyAttributes = (EnumKeyAttribute[])customAttributes;
-            if (keyAttributes?.Any(a => a.Description == value) ?? false)
+            if (keyAttributes.Any(a => a.Description == value))
             {
                 return (T)enumValue;
             }

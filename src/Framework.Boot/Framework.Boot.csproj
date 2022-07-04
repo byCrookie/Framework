@@ -3,12 +3,12 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
-        <PackageId>byCrookie.Framework.Jab</PackageId>
+        <PackageId>byCrookie.Framework.Boot</PackageId>
 
-        <Title>Framework.Jab</Title>
+        <Title>Framework.Boot</Title>
         <Authors>byCrookie</Authors>
-        <PackageTags>framework;boot;utilities;jab</PackageTags>
-        <Description>jab boot base-framework for c# applications</Description>
+        <PackageTags>framework;boot</PackageTags>
+        <Description>base-framework for booting c# applications</Description>
 
         <RepositoryType>git</RepositoryType>
         <PackageProjectUrl>https://github.com/byCrookie/Framework</PackageProjectUrl>
@@ -22,24 +22,16 @@
 
     <ItemGroup>
         <PackageReference Include="byCrookie.NugetSdk" />
-        <PackageReference Include="byCrookie.Workflow.Jab" />
         <PackageReference Include="Jab" />
-        <PackageReference Include="JetBrains.Annotations" />
-        <PackageReference Include="Microsoft.Extensions.Http" />
+        <PackageReference Include="byCrookie.Workflow.Jab" />
         <PackageReference Include="Serilog" />
         <PackageReference Include="Serilog.Sinks.Debug" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Framework\Framework.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Socket" />
-      <Folder Include="Throttle" />
-      <Folder Include="Time" />
-      <Folder Include="Unique" />
-      <Folder Include="Xml" />
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>$(AssemblyName).Tests</_Parameter1>
+        </AssemblyAttribute>
     </ItemGroup>
 
 </Project>

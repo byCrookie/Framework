@@ -2,5 +2,6 @@
 
 public interface IHashGenerator
 {
-    public string HmacSha256(string key, string message);
+    string Sha256(string input);
+    string HmacSha256(string key, string input);
 }

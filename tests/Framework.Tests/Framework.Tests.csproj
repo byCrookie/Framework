@@ -1,23 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
+
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <RootNamespace>Framework.Jab.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoFixture" Version="4.17.0" />
-        <PackageReference Include="FakeItEasy" Version="7.1.0" />
-        <PackageReference Include="FluentAssertions" Version="6.0.0" />
-        <PackageReference Include="NUnit" Version="3.12.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-        <PackageReference Include="Workflow.Autofac" Version="1.0.3" />
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="MSTest.TestAdapter" />
+        <PackageReference Include="MSTest.TestFramework" />
+        <PackageReference Include="coverlet.collector">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Framework\Framework.csproj" />
+        <ProjectReference Include="..\..\src\Framework.Boot\Framework.Boot.csproj" />
+        <ProjectReference Include="..\..\src\Framework.DependencyInjection\Framework.DependencyInjection.csproj" />
+        <ProjectReference Include="..\..\src\Framework\Framework.csproj" />
     </ItemGroup>
 
 </Project>

@@ -3,12 +3,12 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
-        <PackageId>byCrookie.Framework</PackageId>
+        <PackageId>byCrookie.Framework.DependencyInjection</PackageId>
 
-        <Title>Framework</Title>
+        <Title>Framework.DependencyInjection</Title>
         <Authors>byCrookie</Authors>
-        <PackageTags>framework;boot;utilities</PackageTags>
-        <Description>base-framework for c# applications</Description>
+        <PackageTags>framework;dependency-injection</PackageTags>
+        <Description>base-framework dependency-injection for c# applications</Description>
 
         <RepositoryType>git</RepositoryType>
         <PackageProjectUrl>https://github.com/byCrookie/Framework</PackageProjectUrl>
@@ -21,9 +21,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoFixture" />
         <PackageReference Include="byCrookie.NugetSdk" />
-        <PackageReference Include="Microsoft.Extensions.Http" />
         <PackageReference Include="Jab" />
     </ItemGroup>
 

@@ -3,12 +3,12 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
-        <PackageId>byCrookie.Framework</PackageId>
+        <PackageId>byCrookie.Framework.EntityFramework</PackageId>
 
-        <Title>Framework</Title>
+        <Title>Framework.EntityFramework</Title>
         <Authors>byCrookie</Authors>
-        <PackageTags>framework;boot;utilities</PackageTags>
-        <Description>base-framework for c# applications</Description>
+        <PackageTags>framework;entity-framework;ef</PackageTags>
+        <Description>base-framework for c# applications using entity-framework</Description>
 
         <RepositoryType>git</RepositoryType>
         <PackageProjectUrl>https://github.com/byCrookie/Framework</PackageProjectUrl>
@@ -21,9 +21,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoFixture" />
         <PackageReference Include="byCrookie.NugetSdk" />
-        <PackageReference Include="Microsoft.Extensions.Http" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+        <PackageReference Include="Serilog" />
+        <PackageReference Include="Serilog.Sinks.Debug" />
         <PackageReference Include="Jab" />
     </ItemGroup>
 
