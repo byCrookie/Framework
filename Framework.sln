@@ -30,8 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.EntityFramework",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Boot", "src\Framework.Boot\Framework.Boot.csproj", "{C41B0DEA-B84C-4B61-80D3-2EB977EAE72B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.DependencyInjection", "src\Framework.DependencyInjection\Framework.DependencyInjection.csproj", "{742E8A5D-F194-4FE3-9CFA-169E04D76A89}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,10 +64,6 @@ Global
 		{C41B0DEA-B84C-4B61-80D3-2EB977EAE72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C41B0DEA-B84C-4B61-80D3-2EB977EAE72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C41B0DEA-B84C-4B61-80D3-2EB977EAE72B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{742E8A5D-F194-4FE3-9CFA-169E04D76A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{742E8A5D-F194-4FE3-9CFA-169E04D76A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{742E8A5D-F194-4FE3-9CFA-169E04D76A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{742E8A5D-F194-4FE3-9CFA-169E04D76A89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6207860A-293B-4104-8AF9-44C195DE8E40} = {825D7CF6-7F1D-4B7D-BB7A-C3A5D16D668D}
@@ -78,6 +72,5 @@ Global
 		{ED1F416D-6AE2-4150-8F34-1AC2D59014BE} = {56304172-2376-4EA3-9C4F-A627DAC67D09}
 		{248057CE-EE3B-4391-8C92-CFC362D2DF86} = {825D7CF6-7F1D-4B7D-BB7A-C3A5D16D668D}
 		{C41B0DEA-B84C-4B61-80D3-2EB977EAE72B} = {825D7CF6-7F1D-4B7D-BB7A-C3A5D16D668D}
-		{742E8A5D-F194-4FE3-9CFA-169E04D76A89} = {825D7CF6-7F1D-4B7D-BB7A-C3A5D16D668D}
 	EndGlobalSection
 EndGlobal

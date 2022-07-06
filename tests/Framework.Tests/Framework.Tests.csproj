@@ -24,7 +24,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Framework.Boot\Framework.Boot.csproj" />
-        <ProjectReference Include="..\..\src\Framework.DependencyInjection\Framework.DependencyInjection.csproj" />
         <ProjectReference Include="..\..\src\Framework\Framework.csproj" />
     </ItemGroup>
 

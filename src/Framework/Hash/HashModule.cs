@@ -1,14 +1,13 @@
 ﻿using DependencyInjection.Microsoft.Modules;
-using Framework.EntityFramework.Mapping;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Framework.EntityFramework.Access.Session;
+namespace Framework.Hash;
 
-internal class SessionModule : Module
+public class HashModule : Module
 {
     public override void Load(IServiceCollection services)
     {
-        services.AddTransient(typeof(ISession), typeof(Session));
+        services.AddTransient<IHashGenerator, HashGenerator>();
         
         base.Load(services);
     }

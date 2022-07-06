@@ -1,14 +1,16 @@
 ﻿using DependencyInjection.Microsoft.Modules;
+using Framework.EntityFramework.Access;
 using Framework.EntityFramework.Mapping;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Framework.EntityFramework.Access.Session;
+namespace Framework.EntityFramework;
 
-internal class SessionModule : Module
+public class FrameworkEntityFrameworkModule : Module
 {
     public override void Load(IServiceCollection services)
     {
-        services.AddTransient(typeof(ISession), typeof(Session));
+        AddModule(new AccessModule());
+        AddModule(new MappingModule());
         
         base.Load(services);
     }

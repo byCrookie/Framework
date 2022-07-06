@@ -1,14 +1,14 @@
 ﻿using DependencyInjection.Microsoft.Modules;
-using Framework.EntityFramework.Mapping;
+using Framework.Hash;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Framework.EntityFramework.Access.Session;
+namespace Framework.Socket;
 
-internal class SessionModule : Module
+public class SocketModule : Module
 {
     public override void Load(IServiceCollection services)
     {
-        services.AddTransient(typeof(ISession), typeof(Session));
+        services.AddTransient<IWebSocketClient, WebSocketClient>();
         
         base.Load(services);
     }

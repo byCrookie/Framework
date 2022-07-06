@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
+using DependencyInjection.Factory;
 using FluentAssertions;
 using Framework.Boot;
 using Framework.Boot.Configuration;
 using Framework.Boot.Logger;
-using Framework.DependencyInjection.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Workflow;
 

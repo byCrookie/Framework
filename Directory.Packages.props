@@ -1,13 +1,15 @@
 <Project>
     <ItemGroup>
         <PackageVersion Include="byCrookie.NugetSdk" Version="1.0.10"/>
-        <PackageVersion Include="byCrookie.Workflow" Version="1.0.9"/>
-        <PackageVersion Include="byCrookie.Workflow.Jab" Version="1.0.9"/>
+        <PackageVersion Include="byCrookie.Workflow" Version="1.0.10"/>
+        <PackageVersion Include="byCrookie.Workflow.Jab" Version="1.0.10"/>
+        <PackageVersion Include="byCrookie.DependencyInjection" Version="1.0.0"/>
+        <PackageVersion Include="byCrookie.Workflow.DependencyInjection" Version="1.0.10"/>
         <PackageVersion Include="Jab" Version="0.8.2"/>
-        <PackageVersion Include="Autofac" Version="6.3.0"/>
         <PackageVersion Include="AutoFixture" Version="4.17.0"/>
         <PackageVersion Include="JetBrains.Annotations" Version="2021.3.0"/>
         <PackageVersion Include="Microsoft.Extensions.Http" Version="6.0.0"/>
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
         <PackageVersion Include="Serilog" Version="2.10.0"/>
         <PackageVersion Include="Serilog.Sinks.Debug" Version="2.0.0"/>
         <PackageVersion Include="FluentAssertions" Version="6.4.0"/>

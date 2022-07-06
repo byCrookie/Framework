@@ -24,6 +24,7 @@
         <PackageReference Include="byCrookie.NugetSdk" />
         <PackageReference Include="Jab" />
         <PackageReference Include="byCrookie.Workflow.Jab" />
+        <PackageReference Include="byCrookie.Workflow.DependencyInjection" />
         <PackageReference Include="Serilog" />
         <PackageReference Include="Serilog.Sinks.Debug" />
     </ItemGroup>

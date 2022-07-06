@@ -1,14 +1,14 @@
 ﻿using DependencyInjection.Microsoft.Modules;
-using Framework.EntityFramework.Mapping;
+using Framework.Socket;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Framework.EntityFramework.Access.Session;
+namespace Framework.Time;
 
-internal class SessionModule : Module
+public class TimeModule : Module
 {
     public override void Load(IServiceCollection services)
     {
-        services.AddTransient(typeof(ISession), typeof(Session));
+        services.AddTransient<IDateTimeProvider, DateTimeProvider>();
         
         base.Load(services);
     }
