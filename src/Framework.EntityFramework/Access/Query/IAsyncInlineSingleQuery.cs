@@ -2,7 +2,7 @@
 
 namespace Framework.EntityFramework.Access.Query;
 
-public interface IAsyncInlineSingleQuery<out T> where T : class
+public interface IAsyncInlineSingleQuery<out T>
 {
     public IQueryable<T> Query(ISession session);
 }

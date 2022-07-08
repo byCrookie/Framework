@@ -1,12 +1,9 @@
-﻿using JetBrains.Annotations;
-using Workflow;
+﻿using Workflow;
 
 namespace Framework.Boot.Configuration;
 
-[UsedImplicitly]
 public static class BootConfiguration
 {
-    [UsedImplicitly]
     public static IBootScope<T> Configure<T>(object provider) where T : BootContext
     {
         if (provider is IServiceProvider serviceProvider)

@@ -9,8 +9,8 @@ public interface ISession
     Task SaveAsync();
     DbContext Context();
 
-    Task<List<T>> QueryAsync<T>(IAsyncQuery<T> query) where T : class;
-    Task<T> QueryAsync<T>(IAsyncSingleQuery<T> query) where T : class;
+    Task<List<T>> QueryAsync<T>(IAsyncQuery<T> query);
+    Task<T> QueryAsync<T>(IAsyncSingleQuery<T> query);
 
     DbSet<T> Set<T>() where T : class, IEntity;
     ValueTask<T?> FindAsync<T>(long id) where T : class, IEntity;

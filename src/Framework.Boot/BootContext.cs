@@ -1,10 +1,8 @@
 ﻿using Framework.Boot.Configuration;
-using JetBrains.Annotations;
 using Workflow;
 
 namespace Framework.Boot;
 
-[UsedImplicitly]
 public class BootContext : WorkflowBaseContext, IInternalBootContext
 {
     public BootContext(IBootScope<BootContext> bootScope)

@@ -25,13 +25,13 @@ internal class Session : ISession
         return _databaseContext;
     }
 
-    public Task<List<T>> QueryAsync<T>(IAsyncQuery<T> query) where T : class
+    public Task<List<T>> QueryAsync<T>(IAsyncQuery<T> query)
     {
         Log.Debug("Query using async query of entity {Type}", typeof(T));
         return query.Query(this).ToListAsync();
     }
 
-    public Task<T> QueryAsync<T>(IAsyncSingleQuery<T> query) where T : class
+    public Task<T> QueryAsync<T>(IAsyncSingleQuery<T> query)
     {
         Log.Debug("Query using async single query of entity {Type}", typeof(T));
         return query.QueryAsync(this);
