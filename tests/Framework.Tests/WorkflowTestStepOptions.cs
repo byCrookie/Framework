@@ -1,4 +1,4 @@
-﻿namespace Framework.Jab.Tests;
+﻿namespace Framework.Tests;
 
 public class WorkflowTestStepOptions
 {

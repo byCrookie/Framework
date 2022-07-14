@@ -1,6 +1,4 @@
-using System.Threading.Tasks;
-
-namespace Framework.Jab.Tests;
+namespace Framework.Tests;
 
 public class WorkflowTestOptionsStep<TContext, TOptions> : IWorkflowTestOptionsStep<TContext, TOptions> where TContext : WorkflowTestContext
 {

@@ -1,6 +1,6 @@
 using Workflow;
 
-namespace Framework.Jab.Tests;
+namespace Framework.Tests;
 
 internal interface IWorkflowTestStep<in TContext> : IWorkflowStep<TContext> where TContext : WorkflowTestContext
 {

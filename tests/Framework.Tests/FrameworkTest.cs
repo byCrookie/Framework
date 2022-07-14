@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using DependencyInjection.Factory;
 using FluentAssertions;
 using Framework.Boot;
@@ -7,7 +6,7 @@ using Framework.Boot.Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Workflow;
 
-namespace Framework.Jab.Tests;
+namespace Framework.Tests;
 
 [TestClass]
 public class FrameworkTest

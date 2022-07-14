@@ -2,7 +2,7 @@
 using Jab;
 using Workflow;
 
-namespace Framework.Jab.Tests;
+namespace Framework.Tests;
 
 [ServiceProvider]
 [Import(typeof(IFrameworkBootModule))]

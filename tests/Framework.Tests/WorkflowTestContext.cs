@@ -1,6 +1,6 @@
 using Workflow;
 
-namespace Framework.Jab.Tests;
+namespace Framework.Tests;
 
 public class WorkflowTestContext : WorkflowBaseContext
 {
