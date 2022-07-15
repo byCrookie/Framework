@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-
         <PackageId>byCrookie.Framework</PackageId>
 
         <Title>Framework</Title>
@@ -23,7 +21,6 @@
         <PackageReference Include="byCrookie.NugetSdk" />
         <PackageReference Include="byCrookie.DependencyInjection" />
         <PackageReference Include="Microsoft.Extensions.Http" />
-        <PackageReference Include="Jab" />
     </ItemGroup>
 
     <ItemGroup>

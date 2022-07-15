@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{825D7CF6-7F1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "src\Framework\Framework.csproj", "{6207860A-293B-4104-8AF9-44C195DE8E40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Tests", "tests\Framework.Tests\Framework.Tests.csproj", "{ABF78C38-D810-4CF3-B657-26BB6531A012}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Boot.Tests", "tests\Framework.Boot.Tests\Framework.Boot.Tests.csproj", "{ABF78C38-D810-4CF3-B657-26BB6531A012}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{67DF0FC0-BBF7-463F-9191-F40DEB0B80F6}"
 	ProjectSection(SolutionItems) = preProject
