@@ -3,46 +3,44 @@ Contains various components to build .NET apps.
 
 ## Features
 
-* Building workflows (mainly Console-Apps)
-  * And prebuilt bootsteps (autofac, jab, serilog)
+### Framework
+
 * Additional extensions for lists, enums usw.
-* Wrappers around .NET classes (XML, DateTime, GUID usw.)
-* Throttler for parallel task execution using rate-limits
-* Timers
+* Wrappers around .NET classes (XML, DateTime)
+* BackgroundTask
+
+### Framework.Boot
+
+* Bootsteps for
+  * logging (serilog)
+
+### Framework.EntityFramework
+
+* Mapping interfaces between data <-> entity
+* Entity interface
+* Query interfaces
+* Session interface
 
 ## Dependencies & Acknowledgements
-This project relies on following to packages
+This project relies on following packages:
 * Workflow: https://github.com/byCrookie/Workflow
 * BuildSdk https://github.com/byCrookie/BuildSdk
+* DependencyInjection https://github.com/byCrookie/DependencyInjection
 * Jab Dependency-Injection https://github.com/pakrym/jab
 
 ## How to use
 
 ### Local Nuget Source
-* Download the nuget package 
+* Download the nuget package
 * Add download path as nuget source
 * Reference the package in your project
 
 ### Remote Nuget-Source
 
-Add the following remote nuget source to your nuget.config file.
+Add remote nuget source to your nuget.config:
 
-```xml
-<configuration>
-
-  <packageSources>
-    <add key="github" value="https://nuget.pkg.github.com/byCrookie/index.json" />
-  </packageSources>
-
-  <packageSourceCredentials>
-    <github>
-      <add key="Username" value="byCrookie" />
-      <add key="ClearTextPassword" value="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" />
-    </github>
-  </packageSourceCredentials>
-
-</configuration>
-```
+* {Token}: Z2hwX1hybmFLaVIyTm1zaGVWRVpqMjVLbHZsNTBjdldKYjMzQ2hPeQ== -> Convert Base64 back to Text First
+* Execute: dotnet nuget add source --username byCrookie --password {Token} --name byCrookie_Github --store-password-in-clear-text https://nuget.pkg.github.com/byCrookie/index.json
 
 ### Dev
 
@@ -53,37 +51,30 @@ Add the following remote nuget source to your nuget.config file.
 All contributions are welcome! If you have any issues or feature requests, either implement it yourself or create an issue, thank you.
 
 ## Donation
-If you like this project, feel free to donate and support the further development. Thank you.
+If you like this project, feel free to donate and support further development. Thank you.
 
 * Bitcoin (BTC) Donations using Bitcoin (BTC) Network -> bc1qygqya2w3hgpvy8hupctfkv5x06l69ydq4su2e2
 * Ethereum (ETH) Donations using Ethereum (ETH) Network -> 0x1C0416cC1DDaAEEb3017D4b8Dcd3f0B82f4d94C1
 
 ## Docs
 
-### Bootstrapping Application
-Use prebuilt bootstep context and steps to boot application
-using autofac, log4net. Or just make your one bootrapper.
+### Boot
 
 ```C#
-var bootScope = BootConfiguration.Configure<BootContext>(new List<Module> {new BootstrappingModule()});
-var bootFlow = bootScope.WorkflowBuilder
-    .ThenAsync<IFrameworkConfigurationBootStep<BootContext, FrameworkBootStepOptions>,
-        FrameworkBootStepOptions>(
-        config => { config.ConfigurationFile = "TypeCode.Console.cfg.xml"; }
-    )
-    .ThenAsync<IAssemblyBootStep<BootContext>>()
-    .ThenAsync<ITypeBootStep<BootContext>>()
-    .ThenAsync<IContainerBuildBootStep<BootContext>>()
-    .ThenAsync<IModuleCatalogBootStep<BootContext>>()
-    .ThenAsync<ILoggerBootStep<BootContext, LoggerBootStepOptions>, LoggerBootStepOptions>(
-        config => { config.Log4NetConfigurationFile = "TypeCode.Console.cfg.xml"; }
-    )
-    .ThenAsync<IBuildContainerBootStep<BootContext>>()
-    .ThenAsync<IAssemblyLoadBootStep<BootContext>>()
-    .ThenAsync<IStartBootStep<BootContext>>()
-    .Build();
+public static Task BootAsync()
+{
+    var serviceProvider = new TypeCodeWpfServiceProvider();
+    var bootScope = BootConfiguration.Configure<BootContext>(serviceProvider);
 
-await bootScope.Container.DisposeAsync().ConfigureAwait(false);
-await bootFlow.RunAsync(new BootContext()).ConfigureAwait(false);
+    var bootFlow = bootScope.WorkflowBuilder
+        .ThenAsync<ILoggerBootStep<BootContext, LoggerBootStepOptions>, LoggerBootStepOptions>(
+            options => LoggerConfigurationProvider.Create(options)
+        )
+        .ThenAsync<ISetupWpfApplicationStep<BootContext>>()
+        .ThenAsync<IStartBootStep<BootContext>>()
+        .Build();
+
+    return bootFlow.RunAsync(new BootContext(bootScope));
+}
 ```
 
