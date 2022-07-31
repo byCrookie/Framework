@@ -11,6 +11,9 @@ public interface ISession
 
     Task<List<T>> QueryAsync<T>(IAsyncQuery<T> query);
     Task<T> QueryAsync<T>(IAsyncSingleQuery<T> query);
+    
+    IQueryable<T> QueryAsync<T>(IAsyncInlineQuery<T> query);
+    IQueryable<T> QueryAsync<T>(IAsyncInlineSingleQuery<T> query);
 
     DbSet<T> Set<T>() where T : class, IEntity;
     ValueTask<T?> FindAsync<T>(long id) where T : class, IEntity;

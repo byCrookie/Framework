@@ -37,6 +37,18 @@ internal class Session : ISession
         return query.QueryAsync(this);
     }
 
+    public IQueryable<T> QueryAsync<T>(IAsyncInlineQuery<T> query)
+    {
+        Log.Debug("Query using async inline query of entity {Type}", typeof(T));
+        return query.QueryAsync(this);
+    }
+
+    public IQueryable<T> QueryAsync<T>(IAsyncInlineSingleQuery<T> query)
+    {
+        Log.Debug("Query using async inline single query of entity {Type}", typeof(T));
+        return query.QueryAsync(this);
+    }
+
     public DbSet<T> Set<T>() where T : class, IEntity
     {
         Log.Debug("Query using db set of entity {Type}", typeof(T));
