@@ -1,5 +1,4 @@
 ﻿using Serilog;
-using Serilog.Events;
 using Workflow;
 
 namespace Framework.Boot.Logger;
@@ -11,9 +10,6 @@ public class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOpt
     public Task ExecuteAsync(TContext context)
     {
         var config = _options?.Configuration;
-        
-        config?.WriteTo.Debug(LogEventLevel.Debug);
-
         Log.Logger = config?.CreateLogger() ?? Serilog.Core.Logger.None;
         return Task.CompletedTask;
     }
