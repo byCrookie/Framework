@@ -5,11 +5,11 @@ namespace Framework.Boot.Logger;
 
 public class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOptions> where TContext : WorkflowBaseContext, IBootContext
 {
-    private LoggerBootStepOptions? _options;
+    private Lazy<LoggerBootStepOptions>? _options;
 
     public Task ExecuteAsync(TContext context)
     {
-        var config = _options?.Configuration;
+        var config = _options?.Value.Configuration;
         Log.Logger = config?.CreateLogger() ?? Serilog.Core.Logger.None;
         return Task.CompletedTask;
     }
@@ -19,8 +19,8 @@ public class LoggerBootStep<TContext, TOptions> : ILoggerBootStep<TContext, TOpt
         return Task.FromResult(true);
     }
 
-    public void SetOptions(TOptions options)
+    public void SetOptions(Lazy<TOptions> options)
     {
-        _options = options as LoggerBootStepOptions;
+        _options = options as Lazy<LoggerBootStepOptions>;
     }
 }

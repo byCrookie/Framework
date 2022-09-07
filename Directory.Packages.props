@@ -2,8 +2,8 @@
     <ItemGroup>
         <PackageVersion Include="byCrookie.NugetSdk" Version="1.0.19"/>
         <PackageVersion Include="byCrookie.LibrarySdk" Version="1.0.19"/>
-        <PackageVersion Include="byCrookie.Workflow.Jab" Version="1.0.17"/>
-        <PackageVersion Include="byCrookie.Workflow.DependencyInjection" Version="1.0.17"/>
+        <PackageVersion Include="byCrookie.Workflow.Jab" Version="1.0.20"/>
+        <PackageVersion Include="byCrookie.Workflow.DependencyInjection" Version="1.0.20"/>
         <PackageVersion Include="byCrookie.DependencyInjection" Version="1.0.8"/>
         <PackageVersion Include="AutoFixture" Version="4.17.0"/>
         <PackageVersion Include="JetBrains.Annotations" Version="2021.3.0"/>
