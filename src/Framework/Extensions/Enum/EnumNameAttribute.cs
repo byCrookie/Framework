@@ -4,9 +4,9 @@ namespace Framework.Extensions.Enum;
 
 [AttributeUsage(AttributeTargets.All)]
 [Serializable]
-public class EnumKeyAttribute : DescriptionAttribute
+public class EnumNameAttribute : DescriptionAttribute
 {
-    public EnumKeyAttribute(string key) : base(key)
+    public EnumNameAttribute(string name) : base(name)
     {
     }
 }
