@@ -7,13 +7,15 @@ public class HashGenerator : IHashGenerator
 {
     public string Sha256(string input)
     {
+        const string hexadecimal = "x2";
+        
         using (var sha256Hash = SHA256.Create())
         {
             var bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
             var builder = new StringBuilder();
             foreach (var t in bytes)
             {
-                builder.Append(t.ToString("x2"));
+                builder.Append(t.ToString(hexadecimal));
             }
 
             return builder.ToString();

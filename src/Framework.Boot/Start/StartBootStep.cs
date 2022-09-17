@@ -11,13 +11,12 @@ public class StartBootStep<TContext> : IStartBootStep<TContext> where TContext :
 
         try
         {
-            Log.Debug("Jab LifeTimeScope Started");
             Log.Debug("Resolve Application");
             if (context.ServiceProvider.GetService(typeof(IApplication<TContext>)) is not IApplication<TContext> app)
             {
                 throw new ArgumentException($"Can not resolve {nameof(IApplication<TContext>)}");
             }
-            Log.Information("Run Application");
+            Log.Debug("Run Application");
             await app.RunAsync(context, cancellationTokenSource.Token).ConfigureAwait(true);
         }
         catch (Exception e)

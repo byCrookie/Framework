@@ -45,8 +45,7 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
     private void RemoveFromDatas(ICollection<TData> datas, ICollection<TEntity> entities)
     {
         var datasToRemove = datas
-            .Where(data => entities.All(entity => !_mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))))
-            .ToList();
+            .Where(data => entities.All(entity => !_mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))));
 
         foreach (var data in datasToRemove)
         {
@@ -57,8 +56,7 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
     private void UpdateInDatas(IEnumerable<TData> datas, ICollection<TEntity> entities)
     {
         var datasToUpdate = datas
-            .Where(data => entities.Any(entity => _mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))))
-            .ToList();
+            .Where(data => entities.Any(entity => _mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))));
 
         foreach (var dataToUpdate in datasToUpdate)
         {
@@ -71,8 +69,7 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
     {
         var datasToAdd = entities
             .Where(entity => datas.All(data => !_mappingContext.Identifier(data).Equals(_mappingContext.Identifier(entity))))
-            .Select(entity => _mappingContext.MapToData(entity))
-            .ToList();
+            .Select(entity => _mappingContext.MapToData(entity));
 
         foreach (var data in datasToAdd)
         {
@@ -91,8 +88,7 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
     private void RemoveFromEntities(ICollection<TEntity> entities, ICollection<TData> datas)
     {
         var entitiesToRemove = entities
-            .Where(entity => datas.All(data => !_mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))))
-            .ToList();
+            .Where(entity => datas.All(data => !_mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))));
 
         foreach (var entity in entitiesToRemove)
         {
@@ -103,8 +99,7 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
     private void UpdateInEntities(IEnumerable<TEntity> entities, ICollection<TData> datas)
     {
         var entitiesToUpdate = entities
-            .Where(entity => datas.Any(data => _mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))))
-            .ToList();
+            .Where(entity => datas.Any(data => _mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))));
 
         foreach (var entityToUpdate in entitiesToUpdate)
         {
@@ -119,8 +114,7 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
     {
         var entitiesToAdd = datas
             .Where(data => entities.All(entity => !_mappingContext.Identifier(data).Equals(_mappingContext.Identifier(entity))))
-            .Select(data => _mappingContext.MapDataToEntity(data))
-            .ToList();
+            .Select(data => _mappingContext.MapDataToEntity(data));
 
         foreach (var entity in entitiesToAdd)
         {
@@ -136,11 +130,10 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
         return entities;
     }
     
-    private void RemoveFromSession(List<TEntity> entities, ICollection<TData> datas)
+    private void RemoveFromSession(ICollection<TEntity> entities, ICollection<TData> datas)
     {
         var entitiesToRemove = entities
-            .Where(entity => datas.All(data => !_mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))))
-            .ToList();
+            .Where(entity => datas.All(data => !_mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))));
 
         foreach (var entity in entitiesToRemove)
         {
@@ -149,11 +142,10 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
         }
     }
 
-    private void UpdateInSession(IReadOnlyCollection<TEntity> entities, ICollection<TData> datas)
+    private void UpdateInSession(IEnumerable<TEntity> entities, ICollection<TData> datas)
     {
         var entitiesToUpdate = entities
-            .Where(entity => datas.Any(data => _mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))))
-            .ToList();
+            .Where(entity => datas.Any(data => _mappingContext.Identifier(entity).Equals(_mappingContext.Identifier(data))));
 
         foreach (var entity in entitiesToUpdate)
         {
@@ -165,12 +157,11 @@ internal class DataEntityMapper<TData, TEntity> : IDataEntityMapper<TData, TEnti
         }
     }
 
-    private void AddToSession(List<TEntity> entities, IEnumerable<TData> datas)
+    private void AddToSession(ICollection<TEntity> entities, IEnumerable<TData> datas)
     {
         var entitiesToAdd = datas
             .Where(data => entities.All(entity => !_mappingContext.Identifier(data).Equals(_mappingContext.Identifier(entity))))
-            .Select(data => _mappingContext.MapDataToEntity(data))
-            .ToList();
+            .Select(data => _mappingContext.MapDataToEntity(data));
 
         foreach (var entityToAdd in entitiesToAdd)
         {
